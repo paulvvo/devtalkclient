@@ -32,6 +32,19 @@ class Register extends Component {
 			password2:this.state.password2,
 		}
 		console.log(newUser);
+
+		fetch('/api/auths/register', {
+			method:"post",
+			headers:{"Content-Type": "application/json"},
+			body:JSON.stringify({
+				name:this.state.name,
+				email:this.state.email,
+				password:this.state.password,
+				password2:this.state.password2,
+			})
+		})
+		.then(response => response.json())
+		.then(console.log);
 	}
 
 	render(){
