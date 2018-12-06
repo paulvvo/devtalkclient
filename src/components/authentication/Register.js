@@ -43,8 +43,16 @@ class Register extends Component {
 				password2:this.state.password2,
 			})
 		})
-		.then(response => response.json())
-		.then(console.log);
+		.then(response => {
+			console.log(response);
+			if(response.status === 400) throw new Error("Bad Response from Server");
+			return response.json()
+		})
+		.then(data=> console.log(data))
+		.catch(err => {
+			console.log(err);
+			this.setState({errors:err})
+		})
 	}
 
 	render(){
