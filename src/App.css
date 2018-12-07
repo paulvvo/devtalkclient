@@ -37,3 +37,9 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.red{
+	font-size:0.6em;
+	color:red;
+
+}
