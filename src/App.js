@@ -16,7 +16,7 @@ import Register from "./components/authentication/Register";
 import Login from "./components/authentication/Login";
 
 
-const store = createStore([], {}, applyMiddleware());
+const store = createStore(()=> [], {}, applyMiddleware());
 
 class App extends Component {
   render() {
