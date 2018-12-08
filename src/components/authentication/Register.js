@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import axios from 'axios';
 import classnames from "classnames";
+import PropTypes from 'prop-types';
 
 import {registerUser} from '../../actions/authActions';
 class Register extends Component {
@@ -145,6 +146,10 @@ class Register extends Component {
 	}
 }
 
+Register.propTypes = {
+	registerUser:PropTypes.func.isRequired,
+	authReducer: PropTypes.object.isRequired,
+}
 const mapStateToProps = (state) => ({
 	authReducer:state.authReducer
 })
