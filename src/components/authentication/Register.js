@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
 import axios from 'axios';
 import classnames from "classnames";
 
+import {registerUser} from '../../actions/authActions';
 class Register extends Component {
 	constructor(props){
 		super(props);
@@ -34,15 +36,15 @@ class Register extends Component {
 			password2:this.state.password2,
 		}
 		console.log(newUser);
-
-		axios.post('/api/auths/register', newUser)
-		.then(res => console.log(res.data))
-		.catch(err => {
-			// console.log(err);
-			// console.log(err.response);
-			console.log(err.response.data);
-			this.setState({errors:err.response.data})
-		});
+		this.props.registerUser(newUser);
+		// axios.post('/api/auths/register', newUser)
+		// .then(res => console.log(res.data))
+		// .catch(err => {
+		// 	// console.log(err);
+		// 	// console.log(err.response);
+		// 	console.log(err.response.data);
+		// 	this.setState({errors:err.response.data})
+		// });
 
 		//can't get error messages with fetch, used axios instead
 		// fetch('/api/auths/register', {
@@ -70,11 +72,14 @@ class Register extends Component {
 
 	render(){
 		const {errors}  = this.state;
+		const {user} = this.props.authReducer;
 		return(
+
 			<div className="register">
 		    <div className="container">
 		      <div className="row">
 		        <div className="col-md-8 m-auto">
+									{user.name? user.name : null}
 		          <h1 className="display-4 text-center">Sign Up</h1>
 		          <p className="lead text-center">Create your DevConnector account</p>
 		          <form onSubmit={this.onSubmit}>
@@ -140,4 +145,7 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+const mapStateToProps = (state) => ({
+	authReducer:state.authReducer
+})
+export default connect(mapStateToProps, {registerUser})(Register);
