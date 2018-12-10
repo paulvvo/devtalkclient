@@ -18,8 +18,8 @@ class Register extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		if(nextProps.errorReducer){
-			this.setState({errors: nextProps.errorReducer})
+		if(nextProps.errors){
+			this.setState({errors: nextProps.errors})
 		}
 	}
 	onChange = (event) =>{
@@ -47,14 +47,13 @@ class Register extends Component {
 
 	render(){
 		const {errors}  = this.state;
-		const {user} = this.props.authReducer;
+
 		return(
 
 			<div className="register">
 		    <div className="container">
 		      <div className="row">
 		        <div className="col-md-8 m-auto">
-									{user.name? user.name : null}
 		          <h1 className="display-4 text-center">Sign Up</h1>
 		          <p className="lead text-center">Create your DevConnector account</p>
 		          <form onSubmit={this.onSubmit}>
@@ -122,11 +121,11 @@ class Register extends Component {
 
 Register.propTypes = {
 	registerUser:PropTypes.func.isRequired,
-	authReducer: PropTypes.object.isRequired,
-	// errorReducer: PropTypes.object.isRequired,
+	auths: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired,
 }
 const mapStateToProps = (state) => ({
-	authReducer:state.authReducer,
-	errorReducer: state.errorReducer
+	auths:state.authReducer,
+	errors: state.errorReducer
 })
 export default connect(mapStateToProps, {registerUser})(Register);
