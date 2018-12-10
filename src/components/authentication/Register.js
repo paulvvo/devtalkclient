@@ -4,6 +4,7 @@ import classnames from "classnames";
 import PropTypes from 'prop-types';
 
 import {registerUser} from '../../actions/authActions';
+
 class Register extends Component {
 	constructor(props){
 		super(props);
@@ -16,6 +17,11 @@ class Register extends Component {
 		}
 	}
 
+	componentWillReceiveProps(nextProps){
+		if(nextProps.errorReducer){
+			this.setState({errors: nextProps.errorReducer})
+		}
+	}
 	onChange = (event) =>{
 		//could've done above or
 		//bind class register to onChange function
@@ -37,8 +43,6 @@ class Register extends Component {
 		}
 		// console.log(newUser);
 		this.props.registerUser(newUser);
-
-
 	}
 
 	render(){
@@ -118,9 +122,11 @@ class Register extends Component {
 
 Register.propTypes = {
 	registerUser:PropTypes.func.isRequired,
-	authReducer: PropTypes.object.isRequired
+	authReducer: PropTypes.object.isRequired,
+	// errorReducer: PropTypes.object.isRequired,
 }
 const mapStateToProps = (state) => ({
-	authReducer:state.authReducer
+	authReducer:state.authReducer,
+	errorReducer: state.errorReducer
 })
 export default connect(mapStateToProps, {registerUser})(Register);
