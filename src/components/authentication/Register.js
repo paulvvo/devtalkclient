@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import axios from 'axios';
 import classnames from "classnames";
 import PropTypes from 'prop-types';
 
@@ -18,9 +17,9 @@ class Register extends Component {
 	}
 
 	onChange = (event) =>{
-	//could've done above or
-	//bind class register to onChange function
-	//onChange(event){
+		//could've done above or
+		//bind class register to onChange function
+		//onChange(event){
 		// console.log(event.target.value);
 		// console.log(event.target.name);
 		// console.log([event.target.name]);
@@ -36,38 +35,9 @@ class Register extends Component {
 			password:this.state.password,
 			password2:this.state.password2,
 		}
-		console.log(newUser);
+		// console.log(newUser);
 		this.props.registerUser(newUser);
-		// axios.post('/api/auths/register', newUser)
-		// .then(res => console.log(res.data))
-		// .catch(err => {
-		// 	// console.log(err);
-		// 	// console.log(err.response);
-		// 	console.log(err.response.data);
-		// 	this.setState({errors:err.response.data})
-		// });
 
-		//can't get error messages with fetch, used axios instead
-		// fetch('/api/auths/register', {
-		// 	method:"post",
-		// 	headers:{"Content-Type": "application/json"},
-		// 	body:JSON.stringify({
-		// 		name:this.state.name,
-		// 		email:this.state.email,
-		// 		password:this.state.password,
-		// 		password2:this.state.password2,
-		// 	})
-		// })
-		// .then(response => {
-		// 	console.log(response);
-		// 	if(response.status === 400) throw new Error("Bad Response from Server");
-		// 	return response.json()
-		// })
-		// .then(data=> console.log(data))
-		// .catch(err => {
-		// 	console.log(err);
-		// 	this.setState({errors:err})
-		// })
 
 	}
 
