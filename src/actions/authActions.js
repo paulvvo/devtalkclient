@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import {GET_ERRORS} from "./types"
+import setAuthToken from "../utils/setAuthToken";
 
 export const registerUser = (userData, history) => (dispatch) => {
 
@@ -44,4 +45,21 @@ export const registerUser = (userData, history) => (dispatch) => {
 	// 	console.log(err);
 	// 	this.setState({errors:err})
 	// })
+}
+
+export const loginUser = (userData) => dispatch => {
+	axios('/api/auths/login', userData)
+	.then(response => {
+		console.log(response);
+		console.log(response.data);
+		const {token} = response.data;
+		//setting token to local storage
+		localStorage.setItem('jwt', token);
+		//setting token to header
+		setAuthToken(token);
+	})
+	.catch(err => dispatch({
+		type:GET_ERRORS,
+		payload: err.response.data,
+	}))
 }
