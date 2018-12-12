@@ -59,7 +59,7 @@ class Register extends Component {
 		          <p className="lead text-center">Create your DevConnector account</p>
 		          <form onSubmit={this.onSubmit}>
 
-								{errors.name? <div className="red">{errors.name}</div> : <div></div>}
+								{errors.name? <div className="red">{errors.name}</div> : null}
 		            <div className="form-group">
 		              <input
 									type="text"
@@ -71,7 +71,7 @@ class Register extends Component {
 									onChange={this.onChange}/>
 		            </div>
 
-								{errors.email? <div className="red">{errors.email}</div>:<div></div>}
+								{errors.email? <div className="red">{errors.email}</div>:null}
 
 		            <div className="form-group">
 		              <input
@@ -85,7 +85,7 @@ class Register extends Component {
 									onChange={this.onChange}/>
 		              <small className="form-text text-muted">This site uses Gravatar so if you want a profile image, use a Gravatar email</small>
 		            </div>
-								{errors.password? <div className="red">{errors.password}</div>: <div></div>}
+								{errors.password? <div className="red">{errors.password}</div>: null}
 		            <div className="form-group">
 		              <input
 									type="password"
@@ -97,7 +97,7 @@ class Register extends Component {
 									value={this.state.password}
 									onChange={this.onChange}/>
 		            </div>
-								{errors.password2? <div className="red">{errors.password2}</div> : <div></div>}
+								{errors.password2? <div className="red">{errors.password2}</div> : null}
 		            <div className="form-group">
 		              <input
 									type="password"
