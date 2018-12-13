@@ -74,7 +74,7 @@ export const loginUser = (userData) => dispatch => {
 
 export const logoutUser = () => dispatch =>{
 	//remove token from local storage
-	localStorage.remove('jwt');
+	localStorage.removeItem('jwt');
 	//set auth header to empty
 	setAuthToken(false);
 	//dispatch

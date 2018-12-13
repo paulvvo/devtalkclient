@@ -5,8 +5,41 @@ import PropTypes from "prop-types";
 
 import {logoutUser} from "../../actions/authActions";
 
+
 class Navbar extends Component {
+
+	onLogoutClick = (event) =>{
+		event.preventDefault();
+		this.props.logoutUser();
+	}
 	render(){
+		const {isAuthenticated, user}  = this.props.auths;
+
+		const authLinks = (
+			<ul className="navbar-nav ml-auto">
+
+				<li className="nav-item">
+					<a href="##" className="nav-link" onClick={this.onLogoutClick}>
+						<img src={user.avatar}
+						alt={user.name}
+						title="Must have Gravatar Account for Image"
+						style={{width:'25px', marginRight:'5px'}}/>
+						Logout
+					</a>
+				</li>
+			</ul>
+		);
+
+		const guestLinks = (
+			<ul className="navbar-nav ml-auto">
+				<li className="nav-item">
+					<Link className="nav-link" to="/register">Sign Up</Link>
+				</li>
+				<li className="nav-item">
+					<Link className="nav-link" to="/login">Login</Link>
+				</li>
+			</ul>
+		);
 		return(
 			<div>
 				<nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
@@ -24,14 +57,7 @@ class Navbar extends Component {
 								</li>
 							</ul>
 
-							<ul className="navbar-nav ml-auto">
-								<li className="nav-item">
-									<Link className="nav-link" to="/register">Sign Up</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link" to="/login">Login</Link>
-								</li>
-							</ul>
+							{isAuthenticated ? authLinks : guestLinks}
 						</div>
 					</div>
 				</nav>
