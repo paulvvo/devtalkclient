@@ -40,4 +40,13 @@ class Navbar extends Component {
 	}
 }
 
-export default Navbar;
+Navbar.propTypes = {
+	logoutUser:PropTypes.func.isRequired,
+	auths:PropTypes.object.isRequired,
+}
+
+const mapStateToProps = (state) =>({
+	auths:state.authReducer,
+})
+
+export default connect(mapStateToProps, {logoutUser})(Navbar);
