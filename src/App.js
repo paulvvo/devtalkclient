@@ -7,7 +7,7 @@ import store from "./store";
 import './App.css';
 import setAuthToken from "./utils/setAuthToken";
 import {SET_CURRENT_USER} from './actions/types';
-
+import {logoutUser} from './actions/authActions';
 
 //Components
 import Landing from "./components/layout/Landing";
@@ -25,6 +25,16 @@ if(localStorage.jwt){
 		type:SET_CURRENT_USER,
 		payload: decoded
 	})
+
+	//check for expire token
+	const currentTime = Date.now()/1000;
+
+	if(decoded.exp < currentTime){
+		//logout user
+		store.dispatch(logoutUser());
+		//redirect to login
+		window.location.href = "/login";
+	}
 }
 
 

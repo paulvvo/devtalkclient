@@ -23,6 +23,12 @@ class Register extends Component {
 			this.setState({errors: nextProps.errors})
 		}
 	}
+	componentDidMount(){
+		if(this.props.auths.isAuthenticated){
+			this.props.history.push('/dashboard');
+		}
+	}
+
 	onChange = (event) =>{
 		//could've done above or
 		//bind class register to onChange function
