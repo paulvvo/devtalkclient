@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
@@ -26,8 +26,8 @@ const TextFieldGroup  = ({
 	// } = props;
 
 	return(
-		{error? <div className="red">{error}</div>:null}
 		<div className="form-group">
+			{error? <div className="red">{error}</div>:null}
 			<input
 			type={type}
 			className={classnames('form-control form-control-lg', {
@@ -38,8 +38,9 @@ const TextFieldGroup  = ({
 			value={value}
 			onChange={onChange}
 			disabled={disabled}/>
+			{info?<small className="form-text text-muted"></small>:null}
+
 		</div>
-		{info?<small className="form-text text-muted"></small>:null}
 	)
 }
 
