@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import classnames from "classnames";
+// import classnames from "classnames";
 import PropTypes from 'prop-types';
 
 import {registerUser} from '../../actions/authActions';
@@ -82,6 +82,7 @@ class Register extends Component {
 									onChange ={this.onChange}
 									type="email"
 									error={errors.email}
+									info="Site Uses Gravatar, You will need a Gravatar account for custom images"
 								/>
 
 								<TextFieldGroup

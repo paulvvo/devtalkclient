@@ -13,6 +13,7 @@ const TextFieldGroup  = ({
 	onChange,
 	disabled,
 }) =>{
+
 	// const {
 	// 	name,
 	// 	placeholder,
@@ -38,7 +39,7 @@ const TextFieldGroup  = ({
 			value={value}
 			onChange={onChange}
 			disabled={disabled}/>
-			{info?<small className="form-text text-muted"></small>:null}
+			{info?<small className="form-text text-muted">{info}</small>:null}
 
 		</div>
 	)
