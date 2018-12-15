@@ -6,8 +6,11 @@ import jwtDecode from "jwt-decode"
 import store from "./store";
 import './App.css';
 import setAuthToken from "./utils/setAuthToken";
+
+//actions
 import {SET_CURRENT_USER} from './actions/types';
 import {logoutUser} from './actions/authActions';
+import {clearCurrentProfile} from "./actions/profileActions";
 
 //Components
 import Landing from "./components/layout/Landing";
@@ -33,6 +36,9 @@ if(localStorage.jwt){
 	if(decoded.exp < currentTime){
 		//logout user
 		store.dispatch(logoutUser());
+
+		//clear profile
+		store.dispatch(clearCurrentProfile());
 		//redirect to login
 		window.location.href = "/login";
 	}
