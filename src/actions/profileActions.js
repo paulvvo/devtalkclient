@@ -22,9 +22,16 @@ export const getCurrentProfile = () => (dispatch) =>{
 	}))
 }
 
-const setProfileLoading  = () => dispatch =>{
+export const setProfileLoading  = () => dispatch =>{
 	dispatch({
 		type:PROFILE_LOADING,
+		payload:{}
+	})
+}
+
+export const clearCurrentProfile = () => dispatch =>{
+	dispatch({
+		type:CLEAR_CURRENT_PROFILE,
 		payload:{}
 	})
 }
