@@ -7,7 +7,8 @@ import {
 	GET_PROFILES,
 	CLEAR_CURRENT_PROFILE} from "../actions/types";
 
-export const getCurrentProfile = () => dispatch =>{
+
+export const getCurrentProfile = () => (dispatch) =>{
 	dispatch(setProfileLoading());
 
 	axios.get('/api/profiles')
@@ -21,7 +22,7 @@ export const getCurrentProfile = () => dispatch =>{
 	}))
 }
 
-const setProfileLoading  = () => {
+const setProfileLoading  = () => dispatch =>{
 	dispatch({
 		type:PROFILE_LOADING,
 		payload:{}
