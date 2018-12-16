@@ -7,12 +7,32 @@ import {getCurrentProfile} from "../../actions/profileActions";
 
 
 class Dashboard extends Component{
+
+
 	componentDidMount(){
 		this.props.getCurrentProfile()
 	}
 	render(){
+
+		const {user} = this.props.auths;
+		const {loading, profile} = this.props.profiles;
+		let dashboardContent = null;
+		if(loading || profile === loading){
+			dashboardContent = <div>Loading</div>
+		}else{
+			dashboardContent = <div>Hello</div>
+		}
 		return(
-			<div>hi</div>
+			<div className="dashboard">
+				<div className="container">
+					<div className="row">
+						<div className="col-md-12">
+							<div className="display-4">Dashboard</div>
+							{dashboardContent}
+						</div>
+					</div>
+				</div>
+			</div>
 		)
 	}
 }
