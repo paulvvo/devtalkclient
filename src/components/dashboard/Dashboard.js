@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 //actions
 import {getCurrentProfile} from "../../actions/profileActions";
 
+//components
+// import Loading from "../common/Loading";
+import Loading from "../common/Loading";
 
 class Dashboard extends Component{
 
@@ -18,7 +21,7 @@ class Dashboard extends Component{
 		const {loading, profile} = this.props.profiles;
 		let dashboardContent = null;
 		if(loading || profile === loading){
-			dashboardContent = <div>Loading</div>
+			dashboardContent = <div><Loading/></div>
 		}else{
 			dashboardContent = <div>Hello</div>
 		}
@@ -29,6 +32,7 @@ class Dashboard extends Component{
 						<div className="col-md-12">
 							<div className="display-4">Dashboard</div>
 							{dashboardContent}
+							<Loading/>
 						</div>
 					</div>
 				</div>
