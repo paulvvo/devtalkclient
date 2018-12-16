@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-
+import {Link} from "react-router-dom";
 //actions
 import {getCurrentProfile} from "../../actions/profileActions";
 
@@ -20,10 +20,22 @@ class Dashboard extends Component{
 		const {user} = this.props.auths;
 		const {loading, profile} = this.props.profiles;
 		let dashboardContent = null;
-		if(loading || profile === loading){
+		if(loading || profile === null){
 			dashboardContent = <div><Loading/></div>
 		}else{
-			dashboardContent = <div>Hello</div>
+			if(Object.keys(profile).length >0){
+				dashboardContent = <div>Profile</div>
+			}else{
+				dashboardContent = (
+					<div>
+						<p>Welcome {user.name}</p>
+						<p>You have not yet an profile for this account yet</p>
+						<Link to="/create-profile" className = "btn btn-lg btn-info">
+							 Create Profile
+						</Link>
+					</div>
+				)
+			}
 		}
 		return(
 			<div className="dashboard">
@@ -32,7 +44,7 @@ class Dashboard extends Component{
 						<div className="col-md-12">
 							<div className="display-4">Dashboard</div>
 							{dashboardContent}
-							<Loading/>
+
 						</div>
 					</div>
 				</div>
