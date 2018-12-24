@@ -1,12 +1,18 @@
 import React from "react";
-import {route,redirect} from "react-router=dom";
+import {Route,Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 
 
-const PrivateRoute = () =>{
+const PrivateRoute = ({component, auths, ...rest}) =>{
 	return(
-		<div>hi</div>
+		<Route
+		{...rest}
+		render={props =>
+			auths.isAuthenticated
+			? <component {...props}/>
+			: <Redirect to="/login"/>
+		}/>
 	)
 }
 

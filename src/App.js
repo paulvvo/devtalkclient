@@ -19,6 +19,8 @@ import Footer from "./components/layout/Footer";
 import Register from "./components/authentication/Register";
 import Login from "./components/authentication/Login";
 import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/common/PrivateRoute";
+
 
 if(localStorage.jwt){
 	setAuthToken(localStorage.jwt);
