@@ -20,6 +20,7 @@ import Register from "./components/authentication/Register";
 import Login from "./components/authentication/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/common/PrivateRoute";
+import CreateProfile from "./components/createProfile/CreateProfile";
 
 
 if(localStorage.jwt){
