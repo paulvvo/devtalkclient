@@ -36,7 +36,7 @@ class CreateProfile extends Component{
 							<p className="lead text-center">
 								Let's Get Some Information to Make Your Profile Stand Out
 							</p>
-							small <div className="d-block pb-3">* = required fields</div>
+							<small className="d-block pb-3">* = required fields</small>
 						</div>
 					</div>
 				</div>
