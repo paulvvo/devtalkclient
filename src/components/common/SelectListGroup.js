@@ -2,25 +2,31 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const TextAreaFieldGroup  = ({
+const SelectListGroup  = ({
 	name,
-	placeholder,
 	value,
 	error,
 	info,
 	onChange,
+	options
 }) =>{
+	const selectOptions = options.map(option =>(
+		<option key={option.label} value={option.value}>
+			{option.label}
+		</option>
+	));
 	return(
 		<div className="form-group">
 			{error? <div className="red">{error}</div>:null}
-			<textarea
+			<select
 			className={classnames('form-control form-control-lg', {
 				'is-invalid':error
 			})}
-			placeholder={placeholder}
 			name={name}
 			value={value}
-			onChange={onChange}/>
+			onChange={onChange}>
+				{selectOptions}
+			</select>
 			{info?<small className="form-text text-muted">{info}</small>:null}
 
 		</div>
@@ -28,13 +34,13 @@ const TextAreaFieldGroup  = ({
 }
 
 
-TextAreaFieldGroup.propTypes = {
+SelectListGroup.propTypes = {
 	name:PropTypes.string.isRequired,
-	placeholder:PropTypes.string,
 	value:PropTypes.string.isRequired,
 	error:PropTypes.string,
 	info:PropTypes.string,
 	onChange:PropTypes.func.isRequired,
+	options:PropTypes.array.isRequired,
 }
 
-export default TextAreaFieldGroup;
+export default SelectListGroup;
