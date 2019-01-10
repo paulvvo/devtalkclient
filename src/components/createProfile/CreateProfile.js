@@ -31,6 +31,17 @@ class CreateProfile extends Component{
 	}
 	render(){
 		const {errors}  = this.state;
+		const options = [
+			{label:'* Select Professional Status', value:0},
+			{label:'Developer', value:'Developer'},
+			{label:'Junior Developer', value:'Junior Developer'},
+			{label:'Senior Developer', value:'Senior Developer'},
+			{label:'Manager', value:'Manager'},
+			{label:'Student', value:'Student'},
+			{label:'Instructor', value:'Instructor'},
+			{label:'Intern', value:'Intern'},
+			{label:'Other', value:'Other'}
+		]
 		return(
 			<div className='create-profile'>
 				<div className="container">
@@ -49,6 +60,15 @@ class CreateProfile extends Component{
 									onChange={this.onChange}
 									errors = {errors.handle}
 									info = "A unique handle for your profile URL. Your full name, company name, nickname"
+								/>
+								<SelectListGroup
+									placeholder="Status"
+									name="status"
+									value = {this.state.status}
+									onChange={this.onChange}
+									options={options}
+									errors = {errors.status}
+									info = "Career Status"
 								/>
 							</form>
 						</div>
@@ -77,4 +97,4 @@ const mapStateToProps = (state) => {
 		errors:state.errorReducer,
 	})
 }
-export default connect(null)(CreateProfile);
+export default connect(mapStateToProps)(CreateProfile);
