@@ -95,6 +95,31 @@ class CreateProfile extends Component{
 									errors={errors.location}
 									info="City or State"
 								/>
+								<TextFieldGroup
+									placeholder="* Skills"
+									name="skills"
+									value={this.state.skills}
+									onChange={this.onChange}
+									error={errors.skills}
+									info = "Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)"
+								/>
+								<TextFieldGroup
+									placeholder="GitHub Username"
+									name="githubusername"
+									value={this.state.githubusername}
+									onChange={this.onChange}
+									error={errors.githubusername}
+									info = "If you want your latest repos to be displayed, add your GitHub username"
+								/>
+								<TextAreaFieldGroup
+									placeholder="Short Bio"
+									name="bio"
+									value={this.state.bio}
+									onChange={this.onChange}
+									error={errors.bio}
+									info="Tell us about yourself"
+								/>
+
 							</form>
 						</div>
 					</div>
