@@ -120,6 +120,15 @@ class CreateProfile extends Component{
 									info="Tell us about yourself"
 								/>
 
+								<div className="mb-3">
+									<button className="btn -btn-light" onClick={() =>{
+										this.setState({displaySocialInputs:!this.state.displaySocialInputs})
+										console.log(this.state.displaySocialInputs);
+									}}>Add Social Media Network Links</button>
+										<span className="text-muted">Optional</span>
+								</div>
+
+
 							</form>
 						</div>
 					</div>
@@ -138,7 +147,7 @@ class CreateProfile extends Component{
 }
 
 CreateProfile.propTypes = {
-	profile:PropTypes.object.isRequired,
+	profiles:PropTypes.object.isRequired,
 	errors: PropTypes.object.isRequired,
 }
 const mapStateToProps = (state) => {
