@@ -58,7 +58,7 @@ TextFieldGroup.propTypes = {
 	disabled:PropTypes.string,
 }
 
-TextFieldGroup.defaults = {
+TextFieldGroup.defaultProps = {
 	type:'text'
 }
 

@@ -30,7 +30,7 @@ class CreateProfile extends Component{
 		}
 	}
 	render(){
-		const {errors}  = this.state;
+		const {errors, displaySocialInputs}  = this.state;
 		const options = [
 			{label:'* Select Professional Status', value:0},
 			{label:'Developer', value:'Developer'},
@@ -42,6 +42,22 @@ class CreateProfile extends Component{
 			{label:'Intern', value:'Intern'},
 			{label:'Other', value:'Other'}
 		]
+		let socialInputs;
+		if(displaySocialInputs){
+
+			socialInputs = (
+				<div>
+					<InputGroup
+						placeholder="twitter profile url"
+						name="twitter"
+						icon="fab fa-twitter"
+						value={this.state.twitter}
+						onChange={this.onChange}
+						error={errors.twitter}
+					/>
+				</div>
+			)
+		}
 		return(
 			<div className='create-profile'>
 				<div className="container">
@@ -128,7 +144,7 @@ class CreateProfile extends Component{
 										<span className="text-muted">Optional</span>
 								</div>
 
-
+								{socialInputs}
 							</form>
 						</div>
 					</div>
