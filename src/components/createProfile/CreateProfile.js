@@ -55,6 +55,38 @@ class CreateProfile extends Component{
 						onChange={this.onChange}
 						error={errors.twitter}
 					/>
+					<InputGroup
+						placeholder="facebook profile url"
+						name="facebook"
+						icon="fab fa-facebook"
+						value={this.state.facebook}
+						onChange={this.onChange}
+						error={errors.facebook}
+					/>
+					<InputGroup
+						placeholder="linkedin profile url"
+						name="linkedin"
+						icon="fab fa-linkedin"
+						value={this.state.linkedin}
+						onChange={this.onChange}
+						error={errors.linkedin}
+					/>
+					<InputGroup
+						placeholder="youtube channel url"
+						name="youtube"
+						icon="fab fa-youtube"
+						value={this.state.youtube}
+						onChange={this.onChange}
+						error={errors.youtube}
+					/>
+					<InputGroup
+						placeholder="instagram profile url"
+						name="instagram"
+						icon="fab fa-instagram"
+						value={this.state.instagram}
+						onChange={this.onChange}
+						error={errors.instagram}
+					/>
 				</div>
 			)
 		}
@@ -145,6 +177,7 @@ class CreateProfile extends Component{
 								</div>
 
 								{socialInputs}
+								<input type="submit" value="submit" classNames="bn btn-info btn-block mt-4"/>
 							</form>
 						</div>
 					</div>
