@@ -5,7 +5,8 @@ import {
 	PROFILE_LOADING,
 	// PROFILE_NOT_FOUND,
 	// GET_PROFILES,
-	CLEAR_CURRENT_PROFILE} from "../actions/types";
+	CLEAR_CURRENT_PROFILE,
+	GET_ERRORS} from "../actions/types";
 
 
 export const getCurrentProfile = () => (dispatch) =>{
@@ -19,6 +20,16 @@ export const getCurrentProfile = () => (dispatch) =>{
 	.catch(err => dispatch({
 		type:GET_PROFILE,
 		payload:{},
+	}))
+}
+
+export const createProfile = (profileData, history) => dispatch => {
+	axios
+	.post("/api/profiles", profileData)
+	.then(response => history.push("/dashboard"))
+	.catch(err => dispatch({
+		type:GET_ERRORS,
+		payload:err.response.data
 	}))
 }
 
