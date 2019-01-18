@@ -31,8 +31,9 @@ class CreateProfile extends Component{
 			errors: {},
 		}
 	}
-	componentsWillReceiveProps(nextProps){
+	componentWillReceiveProps(nextProps){
 		if(nextProps.errors){
+			// console.log("here",nextProps.errors)
 			this.setState({errors:nextProps.errors});
 		}
 	}
@@ -97,6 +98,7 @@ class CreateProfile extends Component{
 				</div>
 			)
 		}
+		console.log(this.state.errors);
 		return(
 			<div className='create-profile'>
 				<div className="container">
@@ -113,7 +115,7 @@ class CreateProfile extends Component{
 									name="handle"
 									value = {this.state.handle}
 									onChange={this.onChange}
-									errors = {errors.handle}
+									error = {errors.handle}
 									info = "A unique handle for your profile URL. Your full name, company name, nickname"
 								/>
 								<SelectListGroup
@@ -122,7 +124,7 @@ class CreateProfile extends Component{
 									value = {this.state.status}
 									onChange={this.onChange}
 									options={options}
-									errors = {errors.status}
+									error = {errors.status}
 									info = "Career Status"
 								/>
 
@@ -176,7 +178,8 @@ class CreateProfile extends Component{
 								/>
 
 								<div className="mb-3">
-									<button className="btn -btn-light" onClick={() =>{
+									<button className="btn -btn-light" onClick={(e) =>{
+										e.preventDefault();
 										this.setState({displaySocialInputs:!this.state.displaySocialInputs})
 										console.log(this.state.displaySocialInputs);
 									}}>Add Social Media Network Links</button>
