@@ -98,7 +98,7 @@ class CreateProfile extends Component{
 				</div>
 			)
 		}
-		console.log(this.state.errors);
+		 console.log(this.state.errors);
 		return(
 			<div className='create-profile'>
 				<div className="container">
@@ -206,7 +206,7 @@ class CreateProfile extends Component{
 			website:this.state.website,
 			location:this.state.location,
 			status:this.state.status,
-			skills:this.state.kills,
+			skills:this.state.skills,
 			githubusername:this.state.githubusername,
 			bio:this.state.bio,
 			twitter:this.state.twitter,

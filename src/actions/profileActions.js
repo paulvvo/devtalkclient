@@ -28,7 +28,7 @@ export const createProfile = (profileData, history) => dispatch => {
 	.post("/api/profiles", profileData)
 	.then(response => history.push("/dashboard"))
 	.catch(err => {
-		console.log(err.response.data);
+		// console.log(err.response.data);
 		return dispatch({
 			type:GET_ERRORS,
 			payload:err.response.data
