@@ -24,11 +24,17 @@ class Dashboard extends Component{
 			dashboardContent = <div><Loading/></div>
 		}else{
 			if(Object.keys(profile).length >0){
-				dashboardContent = <div>Profile</div>
+				dashboardContent = (
+					<div>
+						<p className="lead text-muted">
+							<Link to={`profile/${profile.handle}`}>Welcome {user.name}</Link>
+						</p>
+					</div>
+				)
 			}else{
 				dashboardContent = (
 					<div>
-						<p>Welcome {user.name}</p>
+						<p className="lead text-muted">Welcome {user.name}</p>
 						<p>You have not yet an profile for this account yet</p>
 						<Link to="/create-profile" className = "btn btn-lg btn-info">
 							 Create Profile
