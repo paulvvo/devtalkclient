@@ -6,8 +6,8 @@ import {Link} from "react-router-dom";
 import {getCurrentProfile} from "../../actions/profileActions";
 
 //components
-// import Loading from "../common/Loading";
 import Loading from "../common/Loading";
+import ProfileActions from "../dashboard/ProfileActions";
 
 class Dashboard extends Component{
 
@@ -29,6 +29,7 @@ class Dashboard extends Component{
 						<p className="lead text-muted">
 							<Link to={`profile/${profile.handle}`}>Welcome {user.name}</Link>
 						</p>
+						<ProfileActions/>
 					</div>
 				)
 			}else{
