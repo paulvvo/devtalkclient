@@ -16,7 +16,6 @@ class Dashboard extends Component{
 		this.props.getCurrentProfile()
 	}
 	render(){
-
 		const {user} = this.props.auths;
 		const {loading, profile} = this.props.profiles;
 		let dashboardContent = null;
@@ -30,6 +29,8 @@ class Dashboard extends Component{
 							<Link to={`profile/${profile.handle}`}>Welcome {user.name}</Link>
 						</p>
 						<ProfileActions/>
+						<div style={{marginBottom:"60px"}}/>
+						<button onClick={this.deleteProfile} className="btn btn-danger">Delete Profile</button>
 					</div>
 				)
 			}else{
@@ -57,6 +58,9 @@ class Dashboard extends Component{
 				</div>
 			</div>
 		)
+	}
+	deleteProfile = (e) =>{
+		console.log("deleteing profile");
 	}
 }
 
