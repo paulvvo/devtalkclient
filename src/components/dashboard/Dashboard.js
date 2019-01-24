@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 //actions
-import {getCurrentProfile} from "../../actions/profileActions";
+import {getCurrentProfile, deleteProfile} from "../../actions/profileActions";
 
 //components
 import Loading from "../common/Loading";
@@ -60,7 +60,8 @@ class Dashboard extends Component{
 		)
 	}
 	deleteProfile = (e) =>{
-		console.log("deleteing profile");
+		console.log("deleting profile");
+		this.props.deleteProfile();
 	}
 }
 
@@ -68,9 +69,10 @@ Dashboard.propTypes = {
 	auths:PropTypes.object.isRequired,
 	profiles:PropTypes.object.isRequired,
 	getCurrentProfile: PropTypes.func.isRequired,
+	deleteProfile: PropTypes.func.isRequired,
 }
 const mapStateToProps = (state) => ({
 	auths:state.authReducer,
 	profiles:state.profileReducer
 })
-export default connect(mapStateToProps, {getCurrentProfile})(Dashboard);
+export default connect(mapStateToProps, {getCurrentProfile, deleteProfile})(Dashboard);
