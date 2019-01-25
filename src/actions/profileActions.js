@@ -45,6 +45,10 @@ export const deleteProfile = () => dispatch => {
 			type:SET_CURRENT_USER,
 			payload:{},
 		}))
+		.catch(res => dispatch({
+			type:GET_ERRORS,
+			payload:res.response.data,
+		}));
 	}
 }
 
