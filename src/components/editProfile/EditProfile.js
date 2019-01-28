@@ -9,6 +9,7 @@ import InputGroup from "../common/InputGroup";
 import SelectListGroup from "../common/SelectListGroup";
 
 import {createProfile, getCurrentProfile} from "../../actions/profileActions";
+import isEmpty from "../../validation/isEmpty";
 
 class EditProfile extends Component{
 	constructor(){
@@ -35,6 +36,16 @@ class EditProfile extends Component{
 		if(nextProps.errors){
 			// console.log("here",nextProps.errors)
 			this.setState({errors:nextProps.errors});
+		}
+		if(nextProps.profiles.profile){
+			const profile  = nextProps.profiles.profile;
+			const skills = profile.skills.join(',');
+
+			profile.company = isEmpty(profile.company)? "":profile.company;
+			profile.website = isEmpty(profile.website)? "":profile.website;
+			profile.location = isEmpty(profile.location)? "":profile.location;
+			profile.githubusername = isEmpty(profile.githubusername)? "":profile.githubusername;
+
 		}
 	}
 	render(){
