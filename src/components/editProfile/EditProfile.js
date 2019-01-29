@@ -46,6 +46,11 @@ class EditProfile extends Component{
 			profile.location = isEmpty(profile.location)? "":profile.location;
 			profile.githubusername = isEmpty(profile.githubusername)? "":profile.githubusername;
 
+			profile.social = isEmpty(profile.social)? {}:profile.social;
+			profile.facebook = isEmpty(profile.social.facebook)? "" :profile.social.facebook;
+			profile.linkedin = isEmpty(profile.social.linkedin)? "" :profile.social.linkedin;
+			profile.youtube = isEmpty(profile.social.youtube)? "" :profile.social.youtube;
+			profile.instagram = isEmpty(profile.social.instagram)? "" :profile.social.instagram;
 		}
 	}
 	render(){
