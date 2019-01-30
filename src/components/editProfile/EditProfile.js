@@ -38,8 +38,9 @@ class EditProfile extends Component{
 			this.setState({errors:nextProps.errors});
 		}
 		if(nextProps.profiles.profile){
-			const profile  = nextProps.profiles.profile;
+			const profile  = nextProps.profiles.profile
 			const skills = profile.skills.join(',');
+
 
 			profile.company = isEmpty(profile.company)? "":profile.company;
 			profile.website = isEmpty(profile.website)? "":profile.website;
@@ -48,9 +49,26 @@ class EditProfile extends Component{
 
 			profile.social = isEmpty(profile.social)? {}:profile.social;
 			profile.facebook = isEmpty(profile.social.facebook)? "" :profile.social.facebook;
+			profile.twitter= isEmpty(profile.social.twitter)? "" :profile.social.twitter;
 			profile.linkedin = isEmpty(profile.social.linkedin)? "" :profile.social.linkedin;
 			profile.youtube = isEmpty(profile.social.youtube)? "" :profile.social.youtube;
 			profile.instagram = isEmpty(profile.social.instagram)? "" :profile.social.instagram;
+
+			this.setState({
+				handle: profile.handle,
+				company: profile.company,
+				website: profile.website,
+				location: profile.location,
+				status: profile.status,
+				skills: skills,
+				githubusername: profile.githubusername,
+				bio: profile.bio,
+				twitter: profile.twitter,
+				facebook: profile.facebook,
+				linkedin: profile.linkedin,
+				youtube: profile.youtube,
+				instagram: profile.instagram,
+			})
 		}
 	}
 	render(){
