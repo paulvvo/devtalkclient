@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link, withRouter} from "react-router-dom";
 import {TextFieldGroup} from "../common/TextFieldGroup";
-import {TextFieldGroup} from "../common/TextAreaFieldGroup";
+import {TextAreaFieldGroup} from "../common/TextAreaFieldGroup";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
@@ -23,17 +23,34 @@ class AddExperience extends Component{
 		}
 	}
 	render(){
-		returns(
-			<div>Add Exp Component</div>
+		const errors = this.state;
+		return(
+			<div className="add-experience">
+				<div className="container">
+					<div className="row">
+						<div className="col-md-8 m-auto">
+							<Link to="/dashboard" className="btn btn-light">Go Back</Link>
+							<h1 className="display-4 text-center"></h1>
+							<p className="lead text-center">Add Current Job or Any Past Experience</p>
+							<small className="d-block pb-3">* = required fields</small>
+						</div>
+					</div>
+				</div>
+			</div>
 		)
 	}
 }
 const mapStateToProps = (state) =>{
-	return({
+	return ({
 		profiles: state.profileReducer,
 		errors: state.errorsReducer
 	})
 }
 
 
-export default connect(mapStateToProps, {})(withRouter(AddExperience));
+AddExperience.propTypes = {
+	profiles: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired,
+}
+
+export default connect(mapStateToProps)(withRouter(AddExperience));
