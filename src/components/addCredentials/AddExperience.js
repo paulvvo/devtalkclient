@@ -5,6 +5,7 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
+import {addExperience} from "../../actions/profileActions";
 
 
 class AddExperience extends Component{
@@ -116,14 +117,14 @@ class AddExperience extends Component{
 const mapStateToProps = (state) =>{
 	return ({
 		profiles: state.profileReducer,
-		errors: state.errorsReducer
+		errors: state.errorsReducer,
 	})
 }
-
 
 AddExperience.propTypes = {
 	profiles: PropTypes.object.isRequired,
 	errors: PropTypes.object.isRequired,
+	addExperience: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps)(withRouter(AddExperience));
+export default connect(mapStateToProps,{addExperience})(withRouter(AddExperience));
