@@ -25,6 +25,17 @@ class AddExperience extends Component{
 	}
 	onSubmit = (e) =>{
 		e.preventDefault();
+		const expData = {
+			company: this.state.company,
+			title:this.state.title,
+			locaiton:this.state.location,
+			from:this.state.from,
+			to:this.state.to,
+			current:this.state.current,
+			description:this.state.description
+		};
+		this.props.addExperience(expData, this.props.history);
+
 	}
 	onChange = (e) =>{
 		this.setState({[e.target.name]:e.target.value})
@@ -65,7 +76,7 @@ class AddExperience extends Component{
 									placeholder="Location"
 									name="location"
 									value={this.state.location}
-									onchange={this.onChange}
+									onChange={this.onChange}
 									error={errors.location}
 								/>
 								<h6>From Date</h6>
@@ -80,7 +91,7 @@ class AddExperience extends Component{
 								<TextFieldGroup
 									name="to"
 									type="date"
-									value="this.state.to"
+									value={this.state.to}
 									onChange={this.onChange}
 									error={errors.to}
 									disabled={this.state.disabled? "disabled" :""}
@@ -114,12 +125,16 @@ class AddExperience extends Component{
 		)
 	}
 }
-const mapStateToProps = (state) =>{
-	return ({
+// const mapStateToProps = (state) =>{
+// 	return ({
+// 		profiles: state.profileReducer,
+// 		errors: state.errorsReducer,
+// 	})
+// }
+const mapStateToProps = (state) =>({
 		profiles: state.profileReducer,
-		errors: state.errorsReducer,
-	})
-}
+		errors: state.errorReducer,
+})
 
 AddExperience.propTypes = {
 	profiles: PropTypes.object.isRequired,

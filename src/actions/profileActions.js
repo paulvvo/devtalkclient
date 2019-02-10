@@ -59,6 +59,9 @@ export const setProfileLoading  = () => dispatch =>{
 	})
 }
 
+export const addExperience = (expData,history) => dispatch =>{
+	console.log(expData);
+}
 export const clearCurrentProfile = () => dispatch =>{
 	dispatch({
 		type:CLEAR_CURRENT_PROFILE,
