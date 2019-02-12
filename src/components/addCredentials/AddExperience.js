@@ -23,6 +23,11 @@ class AddExperience extends Component{
 			disabled:false,
 		}
 	}
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.errors){
+			this.setState({errors:nextProps.errors});
+		}
+	}
 	onSubmit = (e) =>{
 		e.preventDefault();
 		const expData = {

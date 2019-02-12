@@ -61,7 +61,14 @@ export const setProfileLoading  = () => dispatch =>{
 
 export const addExperience = (expData,history) => dispatch =>{
 	console.log(expData);
+	axios.post("/api/profiles/experience")
+	.then(res => history.push("/dashboard"))
+	.catch(err => dispatch({
+		type:GET_ERRORS,
+		payload: err.response.data
+	}))
 }
+
 export const clearCurrentProfile = () => dispatch =>{
 	dispatch({
 		type:CLEAR_CURRENT_PROFILE,
