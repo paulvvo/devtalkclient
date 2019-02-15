@@ -33,7 +33,7 @@ class AddExperience extends Component{
 		const expData = {
 			company: this.state.company,
 			title:this.state.title,
-			locaiton:this.state.location,
+			location:this.state.location,
 			from:this.state.from,
 			to:this.state.to,
 			current:this.state.current,

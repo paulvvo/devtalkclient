@@ -12,9 +12,9 @@ class AddEducation extends Component{
 	constructor(props){
 		super(props);
 		this.state={
-			company:"",
-			title:"",
-			location:"",
+			school:"",
+			degree:"",
+			fieldofstudy:"",
 			from: "",
 			to: "",
 			current: false,
@@ -31,9 +31,9 @@ class AddEducation extends Component{
 	onSubmit = (e) =>{
 		e.preventDefault();
 		const expData = {
-			company: this.state.company,
-			title:this.state.title,
-			locaiton:this.state.location,
+			school: this.state.school,
+			degree:this.state.degree,
+			fieldofstudy:this.state.fieldofstudy,
 			from:this.state.from,
 			to:this.state.to,
 			current:this.state.current,
@@ -64,25 +64,25 @@ class AddEducation extends Component{
 							<small className="d-block pb-3">* = required fields</small>
 							<form onSubmit={this.onSubmit}>
 								<TextFieldGroup
-									placeholder="* Company"
-									name="company"
-									value={this.state.company}
+									placeholder="* School"
+									name="school"
+									value={this.state.school}
 									onChange={this.onChange}
-									error={errors.company}
+									error={errors.school}
 								/>
 								<TextFieldGroup
-									placeholder="* Job Title"
-									name="title"
-									value={this.state.title}
+									placeholder="* Degree"
+									name="degree"
+									value={this.state.degree}
 									onChange={this.onChange}
-									error={errors.title}
+									error={errors.degree}
 								/>
 								<TextFieldGroup
-									placeholder="Location"
-									name="location"
-									value={this.state.location}
+									placeholder="Field of Study"
+									name="fieldofstudy"
+									value={this.state.fieldofstudy}
 									onChange={this.onChange}
-									error={errors.location}
+									error={errors.fieldofstudy}
 								/>
 								<h6>From Date</h6>
 								<TextFieldGroup
