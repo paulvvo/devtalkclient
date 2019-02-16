@@ -68,6 +68,10 @@ export const addExperience = (expData,history) => dispatch =>{
 		payload: err.response.data
 	}))
 }
+export const addEducation = (eduData,history) => dispatch =>{
+	console.log(eduData);
+
+}
 
 export const clearCurrentProfile = () => dispatch =>{
 	dispatch({

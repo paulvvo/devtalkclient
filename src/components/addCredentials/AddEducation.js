@@ -5,7 +5,7 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
-import {addExperience} from "../../actions/profileActions";
+import {addEducation} from "../../actions/profileActions";
 
 
 class AddEducation extends Component{
@@ -30,7 +30,7 @@ class AddEducation extends Component{
 	}
 	onSubmit = (e) =>{
 		e.preventDefault();
-		const expData = {
+		const eduData = {
 			school: this.state.school,
 			degree:this.state.degree,
 			fieldofstudy:this.state.fieldofstudy,
@@ -39,7 +39,7 @@ class AddEducation extends Component{
 			current:this.state.current,
 			description:this.state.description
 		};
-		this.props.addExperience(expData, this.props.history);
+		this.props.addEducation(eduData, this.props.history);
 
 	}
 	onChange = (e) =>{
@@ -144,7 +144,7 @@ const mapStateToProps = (state) =>({
 AddEducation.propTypes = {
 	profiles: PropTypes.object.isRequired,
 	errors: PropTypes.object.isRequired,
-	addExperience: PropTypes.func.isRequired
+	addEducation: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps,{addExperience})(withRouter(AddEducation));
+export default connect(mapStateToProps,{addEducation})(withRouter(AddEducation));
