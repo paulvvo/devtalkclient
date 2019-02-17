@@ -130,12 +130,6 @@ class AddExperience extends Component{
 		)
 	}
 }
-// const mapStateToProps = (state) =>{
-// 	return ({
-// 		profiles: state.profileReducer,
-// 		errors: state.errorsReducer,
-// 	})
-// }
 const mapStateToProps = (state) =>({
 		profiles: state.profileReducer,
 		errors: state.errorReducer,

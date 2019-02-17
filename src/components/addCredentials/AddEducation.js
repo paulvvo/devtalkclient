@@ -54,13 +54,13 @@ class AddEducation extends Component{
 	render(){
 		const {errors} = this.state;
 		return(
-			<div className="add-experience">
+			<div className="add-education">
 				<div className="container">
 					<div className="row">
 						<div className="col-md-8 m-auto">
 							<Link to="/dashboard" className="btn btn-light">Go Back</Link>
-							<h1 className="display-4 text-center">Add Experience</h1>
-							<p className="lead text-center">Add Current Job or Any Past Experience</p>
+							<h1 className="display-4 text-center">Add Education</h1>
+							<p className="lead text-center">Add your Education</p>
 							<small className="d-block pb-3">* = required fields</small>
 							<form onSubmit={this.onSubmit}>
 								<TextFieldGroup
@@ -119,7 +119,7 @@ class AddEducation extends Component{
 								error={errors.description}
 								onChange={this.onChange}
 								value={this.state.description}
-								info="Tell us about your job"
+								info="Tell us about your program"
 							 />
 							 <input type="submit" value="Submit" className="btn btn-info"/>
 							</form>
@@ -130,21 +130,18 @@ class AddEducation extends Component{
 		)
 	}
 }
-// const mapStateToProps = (state) =>{
-// 	return ({
-// 		profiles: state.profileReducer,
-// 		errors: state.errorsReducer,
-// 	})
-// }
-const mapStateToProps = (state) =>({
+const mapStateToProps = (state) =>{
+	return {
 		profiles: state.profileReducer,
 		errors: state.errorReducer,
-})
+	}
+}
 
 AddEducation.propTypes = {
 	profiles: PropTypes.object.isRequired,
 	errors: PropTypes.object.isRequired,
 	addEducation: PropTypes.func.isRequired
 }
+
 
 export default connect(mapStateToProps,{addEducation})(withRouter(AddEducation));
