@@ -8,6 +8,7 @@ import {getCurrentProfile, deleteProfile} from "../../actions/profileActions";
 //components
 import Loading from "../common/Loading";
 import ProfileActions from "../dashboard/ProfileActions";
+import Experience from "./Experience";
 
 class Dashboard extends Component{
 
@@ -29,6 +30,7 @@ class Dashboard extends Component{
 							<Link to={`profile/${profile.handle}`}>Welcome {user.name}</Link>
 						</p>
 						<ProfileActions/>
+						<Experience exp={profile.experience}/>
 						<div style={{marginBottom:"60px"}}/>
 						<button onClick={this.deleteProfile} className="btn btn-danger">Delete Profile</button>
 					</div>
