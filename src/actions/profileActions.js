@@ -69,6 +69,10 @@ export const addExperience = (expData,history) => dispatch =>{
 	}))
 }
 
+export const deleteExperience = () => dispatch =>{
+	console.log("hello");
+}
+
 export const addEducation = (eduData, history) => dispatch =>{
 	console.log(eduData);
 	axios.post("/api/profiles/education", eduData)
