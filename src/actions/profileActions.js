@@ -72,13 +72,14 @@ export const addExperience = (expData,history) => dispatch =>{
 export const deleteExperience = (expId) => dispatch =>{
 	axios.delete(`/api/profiles/experience/${expId}`)
 	.then(res => dispatch({
-		type: GET>PROFILE,
+		type: GET_PROFILE,
 		payload:res.data
 	}))
-	.catch(err =>{
+	.catch(err => dispatch({
 		type:GET_ERRORS,
 		payload:err.response.data
-	})
+	}))
+
 }
 
 export const addEducation = (eduData, history) => dispatch =>{
