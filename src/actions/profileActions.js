@@ -83,7 +83,7 @@ export const deleteExperience = (expId) => dispatch =>{
 }
 
 export const addEducation = (eduData, history) => dispatch =>{
-	console.log(eduData);
+	// console.log(eduData);
 	axios.post("/api/profiles/education", eduData)
 	.then(res => history.push("/dashboard"))
 	.catch(res => dispatch({
