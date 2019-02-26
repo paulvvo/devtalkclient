@@ -9,7 +9,7 @@ import {getCurrentProfile, deleteProfile} from "../../actions/profileActions";
 import Loading from "../common/Loading";
 import ProfileActions from "../dashboard/ProfileActions";
 import Experience from "./Experience";
-
+import Education from "./Education";
 class Dashboard extends Component{
 
 

@@ -92,6 +92,10 @@ export const addEducation = (eduData, history) => dispatch =>{
 	}));
 }
 
+export const deleteEducation = () => dispatch =>{
+	console.log("deleteEducation");
+}
+
 export const clearCurrentProfile = () => dispatch =>{
 	dispatch({
 		type:CLEAR_CURRENT_PROFILE,
