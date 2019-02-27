@@ -6,20 +6,20 @@ import {deleteEducation} from "../../actions/profileActions";
 
 class Education extends Component{
 
-	onClickDeleteExp = (expId) =>{
-		// console.log(expId);
-		this.props.deleteEducation(expId);
+	onClickDeleteEdu = (eduId) =>{
+		// console.log(eduId);
+		this.props.deleteEducation(eduId);
 	}
 	render(){
-		const experience = this.props.exp.map(exp => (
-			<tr key={exp._id}>
-				<td>{exp.company}</td>
-				<td>{exp.title}</td>
+		const education = this.props.edu.map(edu => (
+			<tr key={edu._id}>
+				<td>{edu.school}</td>
+				<td>{edu.degree}</td>
 				<td>
-					<Moment format="YYYY/MM/DD">{exp.from}</Moment> -
-					{exp.to === null ? ("Now") : (<Moment format="YYYY/MM/DD">{exp.to}</Moment>)}
+					<Moment format="YYYY/MM/DD">{edu.from}</Moment> -
+					{edu.to === null ? ("Now") : (<Moment format="YYYY/MM/DD">{edu.to}</Moment>)}
 				</td>
-				<td><button className="btn btn-danger" onClick={()=>{this.onClickDeleteExp(exp._id)}}>Delete</button></td>
+				<td><button className="btn btn-danger" onClick={()=>{this.onClickDeleteEdu(edu._id)}}>Delete</button></td>
 			</tr>
 		));
 
@@ -29,14 +29,14 @@ class Education extends Component{
 				<table className="table">
 					<thead>
 						<tr>
-							<th>Company</th>
-							<th>Title</th>
+							<th>School</th>
+							<th>Degree</th>
 							<th>Years</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						{experience}
+						{education}
 					</tbody>
 				</table>
 			</div>
