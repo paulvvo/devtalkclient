@@ -10,6 +10,18 @@ import getProfiles from "../../actions/profileActions";
 
 class Profiles extends Component{
 	render(){
+		const {profiles, loading} = this.props;
+		let profileItems;
+
+		if(profiles===null || loading){
+			profileItems=<Loading/>;
+		}else{
+			if(profiles.length > 0){
+				profileItems=(<h4>Profile Items Here</h4>)
+			}else{
+				profileItems=(<h4>No Profile Items</h4>)
+			}
+		}
 		return(<div>hi< /div>)
 	}
 }
