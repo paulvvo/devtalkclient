@@ -6,14 +6,17 @@ import PropTypes from "prop-types";
 import Loading from "../common/Loading";
 
 //Actions
-import getProfiles from "../../actions/profileActions";
+import {getProfiles} from "../../actions/profileActions";
 
 class Profiles extends Component{
+	componentDidMount(){
+		this.props.getProfiles();
+	}
 	render(){
 		const {profiles, loading} = this.props;
-		let profileItems;
 
-		if(profiles===null || loading){
+		let profileItems;
+		if(profiles===null || loading || !profiles){
 			profileItems=<Loading/>;
 		}else{
 			if(profiles.length > 0){
@@ -25,16 +28,16 @@ class Profiles extends Component{
 		return(
 			<div>
 				<div className="profiles">
-							<div className="container">
-								<div className="row">
-									<div className="col-md-12">
-										<h1 className="display-4 text-center">Developer Profiles</h1>
-										<p className="lead text-center">Browse and connect with other developers</p>
-										{profileItems}
-									</div>
-								</div>
+					<div className="container">
+						<div className="row">
+							<div className="col-md-12">
+								<h1 className="display-4 text-center">Developer Profiles</h1>
+								<p className="lead text-center">Browse and connect with other developers</p>
+								{profileItems}
 							</div>
 						</div>
+					</div>
+				</div>
 			</div>
 		)
 	}
@@ -47,4 +50,4 @@ Profiles.propTypes = {
 const mapStateToProps = state => ({
 	profile: state.profileReducer
 });
-export default connect(mapStateToProps, {})(Profiles);
+export default connect(mapStateToProps, {getProfiles})(Profiles);

@@ -9,7 +9,9 @@ import {
 	GET_ERRORS,
 	SET_CURRENT_USER} from "../actions/types";
 
-
+export const getProfiles = () => dispatch =>{
+	console.log("get profiles actions");
+}
 export const getCurrentProfile = () => (dispatch) =>{
 	dispatch(setProfileLoading());
 
