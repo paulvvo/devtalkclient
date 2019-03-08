@@ -4,13 +4,23 @@ import {
 	GET_PROFILE,
 	PROFILE_LOADING,
 	// PROFILE_NOT_FOUND,
-	// GET_PROFILES,
+	GET_PROFILES,
 	CLEAR_CURRENT_PROFILE,
 	GET_ERRORS,
 	SET_CURRENT_USER} from "../actions/types";
 
 export const getProfiles = () => dispatch =>{
-	console.log("get profiles actions");
+	dispatch(setProfileLoading());
+
+	axios.get('/api/profiles/all')
+	.then(response => dispatch({
+		type:GET_PROFILES,
+		payload:response.data
+	}))
+	.catch(err => dispatch({
+		type:GET_PROFILES,
+		payload:null,
+	}))
 }
 export const getCurrentProfile = () => (dispatch) =>{
 	dispatch(setProfileLoading());
