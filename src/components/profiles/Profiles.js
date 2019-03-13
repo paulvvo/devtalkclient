@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 //Components
 import Loading from "../common/Loading";
+import ProfileItem from "./ProfileItem";
 
 //Actions
 import {getProfiles} from "../../actions/profileActions";
