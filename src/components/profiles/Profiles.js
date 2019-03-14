@@ -21,7 +21,7 @@ class Profiles extends Component{
 			profileItems=<Loading/>;
 		}else{
 			if(profiles.length > 0){
-				profileItems=(<h4>Profile Items Here</h4>)
+				profileItems= profiles.map(profile => <ProfileItem key={profile._id} profile={profile}/>)
 			}else{
 				profileItems=(<h4>No Profile Items</h4>)
 			}
