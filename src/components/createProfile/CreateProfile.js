@@ -98,7 +98,7 @@ class CreateProfile extends Component{
 				</div>
 			)
 		}
-		 console.log(this.state.errors);
+		 // console.log(this.state.errors);
 		return(
 			<div className='create-profile'>
 				<div className="container">
@@ -198,7 +198,7 @@ class CreateProfile extends Component{
 
 	onSubmit =(event) =>{
 		event.preventDefault();
-		console.log("submit");
+		// console.log("submit");
 
 		const profileData={
 			handle:this.state.handle,

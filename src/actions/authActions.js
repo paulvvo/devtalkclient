@@ -9,7 +9,7 @@ export const registerUser = (userData, history) => (dispatch) => {
 
 	axios.post('/api/auths/register', userData)
 	.then(response => {
-		console.log(response.data)
+		// console.log(response.data)
 		history.push('/login');
 	})
 	.catch(err => dispatch({
