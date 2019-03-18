@@ -35,7 +35,19 @@ export const getCurrentProfile = () => (dispatch) =>{
 		payload:{},
 	}))
 }
+export const getProfileByHandle = (handle) => (dispatch) =>{
+	dispatch(setProfileLoading());
 
+	axios.get(`/api/profiles/handle/${handle}`)
+	.then(response => dispatch({
+		type:GET_PROFILE,
+		payload:response.data
+	}))
+	.catch(err => dispatch({
+		type:GET_PROFILE,
+		payload:null,
+	}))
+}
 export const createProfile = (profileData, history) => dispatch => {
 	axios
 	.post("/api/profiles", profileData)
@@ -48,7 +60,6 @@ export const createProfile = (profileData, history) => dispatch => {
 		})
 	})
 }
-
 export const deleteProfile = () => dispatch => {
 	if(window.confirm("Are you sure you want to delete profile? THIS CANNOT BE UNDONE")){
 		axios
@@ -63,14 +74,12 @@ export const deleteProfile = () => dispatch => {
 		}));
 	}
 }
-
 export const setProfileLoading  = () => dispatch =>{
 	dispatch({
 		type:PROFILE_LOADING,
 		payload:{}
 	})
 }
-
 export const addExperience = (expData,history) => dispatch =>{
 	console.log(expData);
 	axios.post("/api/profiles/experience",expData)
@@ -80,7 +89,6 @@ export const addExperience = (expData,history) => dispatch =>{
 		payload: err.response.data
 	}))
 }
-
 export const deleteExperience = (expId) => dispatch =>{
 	axios.delete(`/api/profiles/experience/${expId}`)
 	.then(res => dispatch({
@@ -105,7 +113,6 @@ export const deleteEducation = (eduId) => dispatch =>{
 	}))
 
 }
-
 export const addEducation = (eduData, history) => dispatch =>{
 	// console.log(eduData);
 	axios.post("/api/profiles/education", eduData)
@@ -115,7 +122,6 @@ export const addEducation = (eduData, history) => dispatch =>{
 		payload:res.response.data,
 	}));
 }
-
 export const clearCurrentProfile = () => dispatch =>{
 	dispatch({
 		type:CLEAR_CURRENT_PROFILE,
