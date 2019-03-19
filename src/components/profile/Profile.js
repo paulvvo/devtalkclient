@@ -11,7 +11,7 @@ import ProfileGithub from "./ProfileGithub";
 import Loading from "../common/Loading";
 
 //Actions
-import {getProfileByHandle} from "../actions/profileActions";
+import {getProfileByHandle} from "../../actions/profileActions";
 
 class Profile extends Component{
 	componentDidMount(){
@@ -28,6 +28,7 @@ const mapStateToProps = (state) =>({
 	profiles: state.profileReducer
 })
 Profile.propTypes = {
-	profiles:PropTypes.object.isRequired
+	profiles:PropTypes.object.isRequired,
+	getProfileByHandle: PropTypes.func.isRequired
 }
 export default connect(mapStateToProps, {getProfileByHandle})(Profile);
