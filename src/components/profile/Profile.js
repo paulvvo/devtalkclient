@@ -33,11 +33,12 @@ class Profile extends Component{
 							<Link to="/profiles" className="btn btn0light mb-3 float-left">Back to Profiles</Link>
 						</div>
 						<div className="col-md-6"></div>
-						<ProfileHeader profile={profile}/>
-						<ProfileAbout/>
-						<ProfileCreds/>
-						<ProfileGithub/>
+
 					</div>
+					<ProfileHeader profile={profile}/>
+					<ProfileAbout/>
+					<ProfileCreds/>
+					<ProfileGithub/>
 				</div>
 			)
 		}
