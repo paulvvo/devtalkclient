@@ -18,27 +18,32 @@ class ProfileHeader extends Component{
 							<p className="lead text-center">{profile.status} {isEmpty(profile.company) ? null : <span>{profile.company}</span>}</p>
 							<p>{isEmpty(profile.location) ? null : <span>{profile.location}</span>}</p>
 							<p>
-								{isEmpty(profile.social.youtube) ? null : (
-									<a className="text-white p-2" href={`https://${profile.social.youtube}`} target="_blank">
+								{isEmpty(profile.website) ? null : (
+									<a className="text-white p-2" href={`https://${profile.website}`} target="_blank">
 										<i className="fas fa-globe fa-2x"></i>
 									</a>
 								)}
-								{isEmpty(profile.social.twitter) ? null : (
+								{isEmpty(profile.social.youtube) && isEmpty(profile.social) ? null : (
+									<a className="text-white p-2" href={`https://${profile.social.youtube}`} target="_blank">
+										<i className="fab fa-youtube fa-2x"></i>
+									</a>
+								)}
+								{isEmpty(profile.social.twitter) && isEmpty(profile.social) ? null : (
 									<a className="text-white p-2" href={`https://${profile.social.twitter}`} target="_blank">
 										<i className="fab fa-twitter fa-2x"></i>
 									</a>
 								)}
-								{isEmpty(profile.social.facebook) ? null : (
+								{isEmpty(profile.social.facebook) && isEmpty(profile.social) ? null : (
 									<a className="text-white p-2" href={`https://${profile.social.facebook}`} target="_blank">
 										<i className="fab fa-facebook fa-2x"></i>
 									</a>
 								)}
-								{isEmpty(profile.social.linkedin) ? null : (
+								{isEmpty(profile.social.linkedin) && isEmpty(profile.social) ? null : (
 									<a className="text-white p-2" href={`https://${profile.social.linkedin}`} target="_blank">
 										<i className="fab fa-linkedin fa-2x"></i>
 									</a>
 								)}
-								{isEmpty(profile.social.instagram) ? null : (
+								{isEmpty(profile.social.instagram) && isEmpty(profile.social) ? null : (
 									<a className="text-white p-2" href={`https://${profile.social.instagram}`} target="_blank">
 										<i className="fab fa-instagram fa-2x"></i>
 									</a>
