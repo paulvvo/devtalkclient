@@ -23,9 +23,31 @@ class ProfileCreds extends Component{
 				</li>
 			)
 		})
+		const eduItems = education.map(eduItem =>{
+			return(
+				<li key={eduItem._id} className="list-group-item">
+					<h4>{eduItem.school}</h4>
+					<p>
+						<Moment format="YYYY/MM/DD">{eduItem.from}</Moment> - {eduItem.to===null ? "Now" : <span><Moment format="YYYY/MM/DD">{eduItem.to}</Moment></span>}
+					</p>
+					<p>
+						<strong>Degree: </strong>
+						{eduItem.degree}
+					</p>
+					<p>
+						<strong>Field of Study: </strong>
+						{eduItem.fieldofstudy}
+					</p>
+					<p>
+						{eduItem.description === '' ? null : <span><strong>Description: </strong>{eduItem.description}</span>}
+					</p>
+				</li>
+			)
+		})
 		return(
 			<div>
 				{expItems}
+				{eduItems}
 			</div>
 		)
 	}
