@@ -45,9 +45,19 @@ class ProfileCreds extends Component{
 			)
 		})
 		return(
-			<div>
-				{expItems}
-				{eduItems}
+			<div className="row">
+				<div className="col-md-6">
+					<h3 className="text-center text-info">Experience</h3>
+					{
+						expItems.length !== 0 ? <ul> {expItems} </ul> : <p>No Experience Listed</p>
+					}
+				</div>
+				<div className="col-md-6">
+					<h3 className="text-center text-info">Education</h3>
+					{
+						eduItems.length !== 0 ? <ul> {eduItems} </ul> : <p>No Experience Listed</p>
+					}
+				</div>
 			</div>
 		)
 	}
