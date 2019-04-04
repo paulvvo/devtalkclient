@@ -24,23 +24,27 @@ class ProfileGithub extends Component{
 	render(){
 		const {repos} = this.state;
 		// console.log(repos);
-		const repoItems = repos.map(repoItem => (
-			<div key={repoItem.id} className="card card-body mb-2">
-				<div className="row">
-					<div className="col-md-6">
-						<h4>
-							<a href={repoItem.html_url} className="text-info" target="_blank" rel="noopener noreferrer">{repoItem.name}</a>
-						</h4>
-						<p>{repoItem.description}</p>
-					</div>
-					<div className="col-md-6" style={{backgroundColor:"steelblue"}}>
-						<span className="badge badge-info mr-1">Stars{repoItem.stargazers_count}</span>
-						<span className="badge badge-secondary mr-1">Watchers{repoItem.watchers_count}</span>
-						<span className="badge badge-success">Forks{repoItem.forks_count}</span>
+		let repoItems = null;
+		if(repos.length > 0){
+			repoItems = repos.map(repoItem => (
+				<div key={repoItem.id} className="card card-body mb-2">
+					<div className="row">
+						<div className="col-md-6">
+							<h4>
+								<a href={repoItem.html_url} className="text-info" target="_blank" rel="noopener noreferrer">{repoItem.name}</a>
+							</h4>
+							<p>{repoItem.description}</p>
+						</div>
+						<div className="col-md-6" style={{backgroundColor:"steelblue"}}>
+							<span className="badge badge-info mr-1">Stars{repoItem.stargazers_count}</span>
+							<span className="badge badge-secondary mr-1">Watchers{repoItem.watchers_count}</span>
+							<span className="badge badge-success">Forks{repoItem.forks_count}</span>
+						</div>
 					</div>
 				</div>
-			</div>
-		))
+			));
+		}
+
 		return(
 			<div>
 			{repoItems}
