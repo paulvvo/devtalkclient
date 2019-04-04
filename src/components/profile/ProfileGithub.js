@@ -33,6 +33,11 @@ class ProfileGithub extends Component{
 						</h4>
 						<p>{repoItem.description}</p>
 					</div>
+					<div className="col-md-6" style={{backgroundColor:"steelblue"}}>
+						<span className="badge badge-info mr-1">Stars{repoItem.stargazers_count}</span>
+						<span className="badge badge-secondary mr-1">Watchers{repoItem.watchers_count}</span>
+						<span className="badge badge-success">Forks{repoItem.forks_count}</span>
+					</div>
 				</div>
 			</div>
 		))
