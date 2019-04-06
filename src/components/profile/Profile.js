@@ -19,6 +19,11 @@ class Profile extends Component{
 			this.props.getProfileByHandle(this.props.match.params.handle);
 		}
 	}
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.profiles.profile === null && this.props.profiles.loading){
+			this.props.history.push('/not-found');
+		}
+	}
 	render(){
 		const {loading, profile} = this.props.profiles;
 		let profileContent;
