@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 
 //Components
 import PostForm from "./PostForm";
-import Loading from "../common/Loading;"
+import Loading from "../common/Loading";
 
 class Posts extends Component{
 	render(){
