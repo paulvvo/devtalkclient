@@ -15,15 +15,28 @@ class PostForm extends Component {
 			errors:{}
 		}
 	}
+	onChange = (event) =>{
+		this.setState({text:event.target.value});
+	}
+	onSubmit = (event) =>{
+		event.preventDefault();
+		console.log("calls addpost action");
+	}
 	render(){
 		return(
 			<div className="post-form mb-3">
 				<div className="card card-info">
 					<div className="card-header bg-info text-white">Post a comment..</div>
 					<div className="card-body">
-						<form action="">
+						<form onSubmit={this.onSubmit}>
 							<div className="form-group">
-								<textarea className="form-control form-control-lg" placeholder="Create a Post"/>
+								<TextAreaFieldGroup
+									placeholder="Create a post"
+									name="text"
+									value={this.state.text}
+									onChange={this.onChange}
+									errors={this.state.errors}                         /*COME BACK TO THIS*/
+								/>
 							</div>
 							<button className="btn btn-dark">Submit</button>
 						</form>
