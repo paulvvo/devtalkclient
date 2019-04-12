@@ -15,14 +15,35 @@ class PostForm extends Component {
 			errors:{}
 		}
 	}
-	onChange = (event) =>{
-		this.setState({text:event.target.value});
+	componentWillReceiveProps(nextProps){
+		console.log(nextProps);
+		console.log(nextProps.errors);
+		if(nextProps.errors) {
+			this.setState({errors:nextProps.errors})
+		}
 	}
+	onChange = (event) =>{
+		// console.log(event);
+		// console.log(event.target.name);
+		this.setState({[event.target.name]:event.target.value});
+	}
+
 	onSubmit = (event) =>{
 		event.preventDefault();
 		console.log("calls addpost action");
+
+		const {user} = this.props.auth;
+		const newPost = {
+			name: user.name,
+			avatar: user.avatar,
+			text: this.state.text,
+		}
+		this.props.addPost(newPost);
+		this.setState({text:""});
 	}
 	render(){
+		const {errors} = this.props;
+		console.log(errors);
 		return(
 			<div className="post-form mb-3">
 				<div className="card card-info">
@@ -35,7 +56,7 @@ class PostForm extends Component {
 									name="text"
 									value={this.state.text}
 									onChange={this.onChange}
-									errors={this.state.errors}                         /*COME BACK TO THIS*/
+									error={errors.text}                         /*COME BACK TO THIS*/
 								/>
 							</div>
 							<button className="btn btn-dark">Submit</button>
@@ -46,5 +67,13 @@ class PostForm extends Component {
 		)
 	}
 }
-
-export default PostForm;
+PostForm.propTypes = {
+	addPost:PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired
+}
+const mapStateToProps = (state) =>({
+	errors: state.errorReducer,
+	auth: state.authReducer
+})
+export default connect(mapStateToProps,{addPost})(PostForm);
