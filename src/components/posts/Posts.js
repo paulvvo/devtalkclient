@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 //Components
 import PostForm from "./PostForm";
 import Loading from "../common/Loading";
+import PostFeed from "./PostFeed";
 
 //Actions
 import {getPost} from "../../actions/postActions";
@@ -16,13 +17,13 @@ class Posts extends Component{
 	}
 	render(){
 		const {posts, loading} = this.props.posts;
+		// console.log(posts);
 		let postContent;
 		if(posts === null || posts.length <1 || loading){
 			postContent = (<Loading/>);
 		}else{
-			postContent = posts;
-			console.log(postContent);
-
+			postContent = (<PostFeed posts={posts}/>);
+			// console.log(postContent);
 		}
 
 
@@ -33,6 +34,8 @@ class Posts extends Component{
 					<div className="row">
 						<div className="col-md-12">
 							<PostForm/>
+							{postContent}
+
 						</div>
 					</div>
 				</div>
