@@ -5,12 +5,20 @@ import {connect} from "react-redux";
 class PostItem extends Component{
 
 	render(){
-		const {post} = this.props;
-		console.log(post.text);
+		const {post, auth} = this.props;
+		// console.log(post.text);
+		console.log(auth);
 		return(
 			<div>{post.text}</div>
 		)
 	}
 }
+PostItem.propTypes = {
+	post: PropTypes.object.isRequired,
+	auth: PropTypes.object.isRequired,
+}
 
-export default PostItem;
+const mapStateToProps = (state) => ({
+	auth: state.authReducer
+})
+export default connect(mapStateToProps,{})(PostItem);
