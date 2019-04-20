@@ -1,41 +1,47 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class PostItem extends Component{
-
+	onDeleteClick(){
+		console.log("delete comment");
+	}
 	render(){
 		const {post, auth} = this.props;
 		// console.log(post.text);
-		console.log(auth);
-		return(
-			<div class="posts">
+		// console.log(auth);
 
-				<div class="card card-body mb-3">
-					<div class="row">
-						<div class="col-md-2">
+		return(
+			<div className="posts">
+
+				<div className="card card-body mb-3">
+					<div className="row">
+						<div className="col-md-2">
 							<a href="profile.html">
-								<img class="rounded-circle d-none d-md-block" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
+								<img className="rounded-circle d-none d-md-block" src={post.avatar}
 									alt="" />
 							</a>
 							<br />
-							<p class="text-center">John Doe</p>
+							<p className="text-center">{post.name}</p>
 						</div>
-						<div class="col-md-10">
-							<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint possimus corporis sunt necessitatibus! Minus
-								nesciunt soluta suscipit nobis. Amet accusamus distinctio cupiditate blanditiis dolor? Illo perferendis
-								eveniet cum cupiditate aliquam?</p>
-							<button type="button" class="btn btn-light mr-1">
-								<i class="text-info fas fa-thumbs-up"></i>
-								<span class="badge badge-light">4</span>
+						<div className="col-md-10">
+							<p className="lead">{post.text}</p>
+							<button type="button" className="btn btn-light mr-1">
+								<i className="text-info fas fa-thumbs-up"></i>
+								<span className="badge badge-light">{post.likes.length}</span>
 							</button>
-							<button type="button" class="btn btn-light mr-1">
-								<i class="text-secondary fas fa-thumbs-down"></i>
+							<button type="button" className="btn btn-light mr-1">
+								<i className="text-secondary fas fa-thumbs-down"></i>
 							</button>
-							<a href="post.html" class="btn btn-info mr-1">
+							<Link to={`/post/${post._id}`} className="btn btn-info mr-1">
 								Comments
-							</a>
-
+							</Link>
+							{
+								post.user === auth.user.id
+								? <button type="button" className="btn btn-danger mr-1" onClick={this.onDeleteClick.bind(this, post._id)}>Delete</button>
+								: null
+							}
 						</div>
 					</div>
 				</div>
@@ -43,6 +49,7 @@ class PostItem extends Component{
 			</div>
 		)
 	}
+
 }
 PostItem.propTypes = {
 	post: PropTypes.object.isRequired,
