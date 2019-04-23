@@ -23,14 +23,22 @@ export const addPost = (postData) => dispatch =>{
 }
 //Delete Post
 export const deletePost = (id) => dispatch =>{
-	axios.post(`api/posts/${id}`)
-	.then(response => dispatch({
-		type:DELETE_POST,
-		payload:response.data
-	}))
-	.catch(res => dispatch({
+	axios.delete(`api/posts/${id}`)
+	// .then(res => dispatch({
+	// 	type:DELETE_POST,
+	// 	payload:res.data
+	// }))
+	.then(res => {
+		console.log(res.data);
+		dispatch({
+			type: DELETE_POST,
+			payload: res.data
+		})
+		return dispatch(getPost());
+	})
+	.catch(err => dispatch({
 		type:GET_ERRORS,
-		payload: res.response.data
+		payload: err.response.data
 	}))
 }
 
