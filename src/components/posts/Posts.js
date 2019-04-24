@@ -8,12 +8,12 @@ import Loading from "../common/Loading";
 import PostFeed from "./PostFeed";
 
 //Actions
-import {getPost} from "../../actions/postActions";
+import {getPosts} from "../../actions/postActions";
 
 
 class Posts extends Component{
 	componentDidMount(){
-		this.props.getPost();
+		this.props.getPosts();
 	}
 	render(){
 		const {posts, loading} = this.props.posts;
@@ -46,9 +46,9 @@ class Posts extends Component{
 
 Posts.propTypes = {
 	posts: PropTypes.object.isRequired,
-	getPost: PropTypes.func.isRequired,
+	getPosts: PropTypes.func.isRequired,
 }
 const mapStateToProps = (state) => ({
 	posts: state.postReducer,
 })
-export default connect(mapStateToProps, {getPost})(Posts);
+export default connect(mapStateToProps, {getPosts})(Posts);

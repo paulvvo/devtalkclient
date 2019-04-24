@@ -34,7 +34,7 @@ export const deletePost = (id) => dispatch =>{
 			type: DELETE_POST,
 			payload: res.data
 		})
-		return dispatch(getPost());
+		return dispatch(getPosts());
 	})
 	.catch(err => dispatch({
 		type:GET_ERRORS,
@@ -42,7 +42,7 @@ export const deletePost = (id) => dispatch =>{
 	}))
 }
 
-export const getPost = () => dispatch =>{
+export const getPosts = () => dispatch =>{
 	dispatch({
 		type:POST_LOADING,
 	})
@@ -54,5 +54,14 @@ export const getPost = () => dispatch =>{
 	.catch(err => dispatch({
 		type:GET_POSTS,
 		payload:null
+	}))
+}
+
+export const likePost = (postId) => dispatch =>{
+	axios.post(`/api/posts/like/${postId}`)
+	.then(res => dispatch(getPosts()))
+	.catch(err => dispatch({
+		type: GET_ERRORS,
+		payload: err.response.data,
 	}))
 }
