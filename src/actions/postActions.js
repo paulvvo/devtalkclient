@@ -65,3 +65,11 @@ export const likePost = (postId) => dispatch =>{
 		payload: err.response.data,
 	}))
 }
+export const unlikePost = (postId) => dispatch =>{
+	axios.post(`/api/posts/unlike/${postId}`)
+	.then(res => dispatch(getPosts()))
+	.catch(err => dispatch({
+		type: GET_ERRORS,
+		payload: err.response.data,
+	}))
+}
