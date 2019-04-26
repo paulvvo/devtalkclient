@@ -4,13 +4,16 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 //Actions
-import {deletePost,getPosts} from "../../actions/postActions";
+import {deletePost,getPosts, likePost, unlikePost} from "../../actions/postActions";
 
 class PostItem extends Component{
 	onDeleteClick(postId){
 		// console.log("delete comment");
 		this.props.deletePost(postId);
 		// this.props.getPosts();
+	}
+	onLikePost(postId){
+		this.props.likePost(postId);
 	}
 	render(){
 		const {post, auth} = this.props;
@@ -32,7 +35,7 @@ class PostItem extends Component{
 						</div>
 						<div className="col-md-10">
 							<p className="lead">{post.text}</p>
-							<button type="button" className="btn btn-light mr-1">
+							<button type="button" className="btn btn-light mr-1" onClick={this.onLikePost.bind(this, post._id)}>
 								<i className="text-info fas fa-thumbs-up"></i>
 								<span className="badge badge-light">{post.likes.length}</span>
 							</button>
@@ -57,6 +60,8 @@ class PostItem extends Component{
 
 }
 PostItem.propTypes = {
+	likePost: PropTypes.func.isRequired,
+	unlikePost: PropTypes.func.isRequired,
 	deletePost: PropTypes.func.isRequired,
 	getPosts: PropTypes.func.isRequired,
 	post: PropTypes.object.isRequired,
@@ -66,4 +71,4 @@ PostItem.propTypes = {
 const mapStateToProps = (state) => ({
 	auth: state.authReducer
 })
-export default connect(mapStateToProps,{deletePost,getPosts})(PostItem);
+export default connect(mapStateToProps,{deletePost,getPosts,likePost,unlikePost})(PostItem);
