@@ -58,7 +58,7 @@ export const getPosts = () => dispatch =>{
 }
 
 export const likePost = (postId) => dispatch =>{
-	axios.post(`/api/posts/like/${postId}`)
+	axios.put(`/api/posts/like/${postId}`)
 	.then(res => dispatch(getPosts()))
 	.catch(err => dispatch({
 		type: GET_ERRORS,
@@ -66,7 +66,7 @@ export const likePost = (postId) => dispatch =>{
 	}))
 }
 export const unlikePost = (postId) => dispatch =>{
-	axios.post(`/api/posts/unlike/${postId}`)
+	axios.put(`/api/posts/unlike/${postId}`)
 	.then(res => dispatch(getPosts()))
 	.catch(err => dispatch({
 		type: GET_ERRORS,

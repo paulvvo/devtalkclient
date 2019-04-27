@@ -15,6 +15,9 @@ class PostItem extends Component{
 	onLikePost(postId){
 		this.props.likePost(postId);
 	}
+	onUnlikePost(postId){
+		this.props.unlikePost(postId);
+	}
 	render(){
 		const {post, auth} = this.props;
 		// console.log(post.text);
@@ -39,7 +42,7 @@ class PostItem extends Component{
 								<i className="text-info fas fa-thumbs-up"></i>
 								<span className="badge badge-light">{post.likes.length}</span>
 							</button>
-							<button type="button" className="btn btn-light mr-1">
+							<button type="button" className="btn btn-light mr-1" onClick={this.onUnlikePost.bind(this, post._id)}>
 								<i className="text-secondary fas fa-thumbs-down"></i>
 							</button>
 							<Link to={`/post/${post._id}`} className="btn btn-info mr-1">
