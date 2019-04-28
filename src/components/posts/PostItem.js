@@ -25,7 +25,7 @@ class PostItem extends Component{
 			console.log(like)
 			console.log(like.user);
 			console.log(auth.user.id);
-			return like.user === auth.user.id}).length > 1 ? true: false;
+			return like.user === auth.user.id}).length > 0 ? true: false;
 		console.log(status);
 		return status;
 	}
