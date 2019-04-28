@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import classnames from "classnames";
 
 //Actions
 import {deletePost,getPosts, likePost, unlikePost} from "../../actions/postActions";
@@ -17,6 +18,16 @@ class PostItem extends Component{
 	}
 	onUnlikePost(postId){
 		this.props.unlikePost(postId);
+	}
+	checkLikeStatus(likes){
+		const {auth} = this.props;
+		const status = likes.filter(like => {
+			console.log(like)
+			console.log(like.user);
+			console.log(auth.user.id);
+			return like.user === auth.user.id}).length > 1 ? true: false;
+		console.log(status);
+		return status;
 	}
 	render(){
 		const {post, auth} = this.props;
@@ -39,7 +50,9 @@ class PostItem extends Component{
 						<div className="col-md-10">
 							<p className="lead">{post.text}</p>
 							<button type="button" className="btn btn-light mr-1" onClick={this.onLikePost.bind(this, post._id)}>
-								<i className="text-info fas fa-thumbs-up"></i>
+							<i className={classnames("fas fa-thumbs-up", {
+								'text-info':this.checkLikeStatus(post.likes)
+							})}></i>
 								<span className="badge badge-light">{post.likes.length}</span>
 							</button>
 							<button type="button" className="btn btn-light mr-1" onClick={this.onUnlikePost.bind(this, post._id)}>
