@@ -5,8 +5,11 @@ import {connect} from "react-redux";
 import {getPost} from "../../actions/postActions";
 
 class Post extends Component{
+	componentDidMount(){
+		this.props.getPost(this.props.match.params.id);
+	}
 	render(){
-		console.log(this.props.post);
+		// console.log(this.props.post);
 		return(
 			<div>Component: Post</div>
 		)

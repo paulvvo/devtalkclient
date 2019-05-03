@@ -60,7 +60,7 @@ export const getPost = (id) => dispatch =>{
 	dispatch({
 		type:POST_LOADING,
 	})
-	axios.get(`/api/post/${id}`)
+	axios.get(`/api/posts/${id}`)
 	.then(res => dispatch({
 		type:GET_POST,
 		payload: res.data
