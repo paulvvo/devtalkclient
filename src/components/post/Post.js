@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
+//Components
+import PostItem from "../posts/PostItem";
+import Loading from "../common/Loading";
+//Actions
 import {getPost} from "../../actions/postActions";
 
 class Post extends Component{
@@ -10,8 +14,16 @@ class Post extends Component{
 	}
 	render(){
 		// console.log(this.props.post);
+		const {post, loading} = this.props.post;
+		let postContent;
+		console.log(post.text);
+		if(post === null || loading || Object.keys(post).length ===0){
+			postContent = <Loading/>
+		}else{
+			postContent = (<div>{post.text}</div>)
+		}
 		return(
-			<div>Component: Post</div>
+			<div>{postContent}</div>
 		)
 	}
 }
