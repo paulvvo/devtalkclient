@@ -16,11 +16,11 @@ class Post extends Component{
 		// console.log(this.props.post);
 		const {post, loading} = this.props.post;
 		let postContent;
-		console.log(post.text);
+		// console.log(post.text);
 		if(post === null || loading || Object.keys(post).length ===0){
 			postContent = <Loading/>
 		}else{
-			postContent = (<div>{post.text}</div>)
+			postContent = <PostItem post={post}/>
 		}
 		return(
 			<div>{postContent}</div>
