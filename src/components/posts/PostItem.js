@@ -22,18 +22,15 @@ class PostItem extends Component{
 	checkLikeStatus(likes){
 		const {auth} = this.props;
 		const status = likes.filter(like => {
-			console.log(like)
-			console.log(like.user);
-			console.log(auth.user.id);
 			return like.user === auth.user.id}).length > 0 ? true: false;
-		console.log(status);
+		// console.log(status);
 		return status;
 	}
 	render(){
-		const {post, auth} = this.props;
+		const {post, auth, showActions} = this.props;
 		// console.log(post.text);
 		// console.log(auth);
-
+		console.log(showActions);
 		return(
 			<div className="posts">
 
@@ -49,23 +46,28 @@ class PostItem extends Component{
 						</div>
 						<div className="col-md-10">
 							<p className="lead">{post.text}</p>
-							<button type="button" className="btn btn-light mr-1" onClick={this.onLikePost.bind(this, post._id)}>
-							<i className={classnames("fas fa-thumbs-up", {
-								'text-info':this.checkLikeStatus(post.likes)
-							})}></i>
-								<span className="badge badge-light">{post.likes.length}</span>
-							</button>
-							<button type="button" className="btn btn-light mr-1" onClick={this.onUnlikePost.bind(this, post._id)}>
-								<i className="text-secondary fas fa-thumbs-down"></i>
-							</button>
-							<Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-								Comments
-							</Link>
 							{
-								post.user === auth.user.id
-								? <button type="button" className="btn btn-danger mr-1" onClick={this.onDeleteClick.bind(this, post._id)}>Delete</button>
+								showActions
+								? (<div><button type="button" className="btn btn-light mr-1" onClick={this.onLikePost.bind(this, post._id)}>
+								<i className={classnames("fas fa-thumbs-up", {
+									'text-info':this.checkLikeStatus(post.likes)
+								})}></i>
+									<span className="badge badge-light">{post.likes.length}</span>
+								</button>
+								<button type="button" className="btn btn-light mr-1" onClick={this.onUnlikePost.bind(this, post._id)}>
+									<i className="text-secondary fas fa-thumbs-down"></i>
+								</button>
+								<Link to={`/post/${post._id}`} className="btn btn-info mr-1">
+									Comments
+								</Link>
+								{
+									post.user === auth.user.id
+									? <button type="button" className="btn btn-danger mr-1" onClick={this.onDeleteClick.bind(this, post._id)}>Delete</button>
+									: null
+								}</div>)
 								: null
 							}
+
 						</div>
 					</div>
 				</div>

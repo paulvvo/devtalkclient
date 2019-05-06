@@ -14,7 +14,7 @@ class PostFeed extends Component {
 		// {postitems}
 		const postList = posts.map(postItem =>{
 			return(
-				<PostItem key={postItem._id} post={postItem}/>
+				<PostItem key={postItem._id} post={postItem} showActions={true}/>
 			)
 		})
 
