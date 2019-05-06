@@ -77,6 +77,9 @@ class PostItem extends Component{
 	}
 
 }
+PostItem.defaultProps = {
+	showActions:true
+}
 PostItem.propTypes = {
 	likePost: PropTypes.func.isRequired,
 	unlikePost: PropTypes.func.isRequired,
