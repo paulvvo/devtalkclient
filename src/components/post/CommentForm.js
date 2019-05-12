@@ -5,9 +5,9 @@ import {connect} from "react-redux";
 //Components
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 //Action
-import {addPost} from "../../actions/postActions";
+import {addComment} from "../../actions/postActions";
 
-class PostForm extends Component {
+class CommentForm extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -16,8 +16,8 @@ class PostForm extends Component {
 		}
 	}
 	componentWillReceiveProps(nextProps){
-		console.log(nextProps);
-		console.log(nextProps.errors);
+		// console.log(nextProps);
+		// console.log(nextProps.errors);
 		if(nextProps.errors) {
 			this.setState({errors:nextProps.errors})
 		}
@@ -33,12 +33,13 @@ class PostForm extends Component {
 		// console.log("calls addpost action");
 
 		const {user} = this.props.auth;
+		const {postId} = this.props.postId;
 		const newPost = {
 			name: user.name,
 			avatar: user.avatar,
 			text: this.state.text,
 		}
-		this.props.addPost(newPost);
+		this.props.addComment(this.props.postId, newPost);
 		this.setState({text:""});
 	}
 	render(){
@@ -52,7 +53,7 @@ class PostForm extends Component {
 						<form onSubmit={this.onSubmit}>
 							<div className="form-group">
 								<TextAreaFieldGroup
-									placeholder="Create a post"
+									placeholder="Reply to Post"
 									name="text"
 									value={this.state.text}
 									onChange={this.onChange}
@@ -67,13 +68,14 @@ class PostForm extends Component {
 		)
 	}
 }
-PostForm.propTypes = {
-	addPost:PropTypes.func.isRequired,
+CommentForm.propTypes = {
+	addComment:PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
-	errors: PropTypes.object.isRequired
+	errors: PropTypes.object.isRequired,
+	postId: PropTypes.string.isRequired,
 }
 const mapStateToProps = (state) =>({
 	errors: state.errorReducer,
 	auth: state.authReducer
 })
-export default connect(mapStateToProps,{addPost})(PostForm);
+export default connect(mapStateToProps,{addComment})(CommentForm);
