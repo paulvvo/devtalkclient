@@ -33,12 +33,12 @@ class PostForm extends Component {
 		// console.log("calls addpost action");
 
 		const {user} = this.props.auth;
-		const newPost = {
+		const newComment = {
 			name: user.name,
 			avatar: user.avatar,
 			text: this.state.text,
 		}
-		this.props.addPost(newPost);
+		this.props.addPost(newComment);
 		this.setState({text:""});
 	}
 	render(){

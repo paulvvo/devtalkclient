@@ -30,7 +30,7 @@ class PostItem extends Component{
 		const {post, auth, showActions} = this.props;
 		// console.log(post.text);
 		// console.log(auth);
-		console.log(showActions);
+		// console.log(showActions);
 		return(
 			<div className="posts">
 
