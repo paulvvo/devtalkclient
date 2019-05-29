@@ -6,7 +6,7 @@ import {ADD_POST, GET_ERRORS, POST_LOADING, GET_POSTS, DELETE_POST, GET_POST} fr
 export const addComment = (postId, commentData) => dispatch =>{
 	axios.post(`/api/posts/comment/${postId}`, commentData)
 	.then(res => dispatch({
-		type:ADD_POST,
+		type:GET_POST,
 		payload:res.data,
 	}))
 	.catch(err => dispatch({

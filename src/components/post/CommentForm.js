@@ -33,7 +33,6 @@ class CommentForm extends Component {
 		// console.log("calls addpost action");
 
 		const {user} = this.props.auth;
-		const {postId} = this.props.postId;
 		const newPost = {
 			name: user.name,
 			avatar: user.avatar,
