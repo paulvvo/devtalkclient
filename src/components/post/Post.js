@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import PostItem from "../posts/PostItem";
 import Loading from "../common/Loading";
 import CommentForm from "./CommentForm";
+import CommentFeed from "./CommentFeed";
 //Actions
 import {getPost} from "../../actions/postActions";
 
@@ -14,16 +15,22 @@ class Post extends Component{
 		this.props.getPost(this.props.match.params.id);
 	}
 	render(){
-		// console.log(this.props.post);
 		const {post, loading} = this.props.post;
-		let postContent, postForm;
-		// console.log(post.text);
+		// let postContent, postForm, commentFeed;
+		let postContent
 		if(post === null || loading || Object.keys(post).length ===0){
 			postContent = <Loading/>
-			postForm = null;
+			// postForm = null;
 		}else{
-			postContent = <PostItem post={post} showActions={false}/>
-			postForm = <CommentForm postId={post._id}/>
+			// postContent = <PostItem post={post} showActions={false}/>
+			// postForm = <CommentForm postId={post._id}/>
+			postContent = (
+				<div>
+					<PostItem post={post} showActions={false}/>
+					<CommentForm postId={post._id}/>
+					<CommentFeed postId={post._id} comments={post.comments}/>
+				</div>
+			)
 		}
 		return(
 			<div className="post">
@@ -34,7 +41,7 @@ class Post extends Component{
 								Back to Feed
 							</Link>
 							{postContent}
-							{postForm}
+							{/*{postForm}*/}
 						</div>
 					</div>
 				</div>

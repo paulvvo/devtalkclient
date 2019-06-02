@@ -48,23 +48,24 @@ class PostItem extends Component{
 							<p className="lead">{post.text}</p>
 							{
 								showActions
-								? (<div><button type="button" className="btn btn-light mr-1" onClick={this.onLikePost.bind(this, post._id)}>
-								<i className={classnames("fas fa-thumbs-up", {
-									'text-info':this.checkLikeStatus(post.likes)
-								})}></i>
-									<span className="badge badge-light">{post.likes.length}</span>
-								</button>
-								<button type="button" className="btn btn-light mr-1" onClick={this.onUnlikePost.bind(this, post._id)}>
-									<i className="text-secondary fas fa-thumbs-down"></i>
-								</button>
-								<Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-									Comments
-								</Link>
-								{
-									post.user === auth.user.id
-									? <button type="button" className="btn btn-danger mr-1" onClick={this.onDeleteClick.bind(this, post._id)}>Delete</button>
-									: null
-								}</div>)
+								? (<div>
+										<button type="button" className="btn btn-light mr-1" onClick={this.onLikePost.bind(this, post._id)}>
+											<i className={classnames("fas fa-thumbs-up", {
+												'text-info':this.checkLikeStatus(post.likes)
+											})}></i>
+											<span className="badge badge-light">{post.likes.length}</span>
+										</button>
+										<button type="button" className="btn btn-light mr-1" onClick={this.onUnlikePost.bind(this, post._id)}>
+											<i className="text-secondary fas fa-thumbs-down"></i>
+										</button>
+										<Link to={`/post/${post._id}`} className="btn btn-info mr-1">
+											Comments
+										</Link>
+										{
+											post.user === auth.user.id
+											? <button type="button" className="btn btn-danger mr-1" onClick={this.onDeleteClick.bind(this, post._id)}>Delete</button>
+											: null
+										}</div>)
 								: null
 							}
 
