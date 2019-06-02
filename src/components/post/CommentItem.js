@@ -6,6 +6,9 @@ import PropTypes from "prop-types";
 import {deleteComment} from "../../actions/postActions";
 
 class CommentItem extends Component{
+		onDeleteClick(postId,commentId){
+		console.log(postId, commentId, this);
+	}
 	render(){
 		const {comment, postId, auth} = this.props;
 		return(
@@ -13,7 +16,7 @@ class CommentItem extends Component{
 				<div className="row">
 					<div className="col-md-2">
 						<a href="/profiles">
-							<img src={comment.avatar} alt="profile picture" className="rounded-circle d-none d-md-block"/>
+							<img src={comment.avatar} alt="" className="rounded-circle d-none d-md-block"/>
 							<br/>
 							<p className="text-center">{comment.name}</p>
 						</a>
@@ -22,9 +25,9 @@ class CommentItem extends Component{
 						<p className="lead">{comment.text}</p>
 					</div>
 					{
-						// comment.user === auth.user.id
-						// ? <button type="button" className="btn btn-danger mr-1" onClick={this.onDeleteClick.bind(this, postId, comment._id)}>Delete</button>
-						// : null
+						comment.user === auth.user.id
+						? <button type="button" className="btn btn-danger mr-1" onClick={this.onDeleteClick.bind(this, postId, comment._id)}>Delete</button>
+						: null
 					}
 				</div>
 			</div>
@@ -42,4 +45,4 @@ CommentItem.propTypes = {
 const mapStateToProps = (state) =>({
 	auth: state.authReducer,
 })
-export default connect(mapStateToProps)(CommentItem);
+export default connect(mapStateToProps, {deleteComment})(CommentItem);
