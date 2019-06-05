@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {ADD_POST, GET_ERRORS, POST_LOADING, GET_POSTS, DELETE_POST, GET_POST} from "./types";
+import {ADD_POST, GET_ERRORS, POST_LOADING, GET_POSTS, DELETE_POST, GET_POST, CLEAR_ERRORS} from "./types";
 
 //Add Comment
 export const addComment = (postId, commentData) => dispatch =>{
@@ -16,17 +16,12 @@ export const addComment = (postId, commentData) => dispatch =>{
 }
 //Delete Comment
 export const deleteComment = (postId, commentId) => dispatch =>{
-	axios.delete(`api/posts/comment/${postId}/${commentId}`)
-	// .then(res => dispatch({
-	// 	type:DELETE_POST,
-	// 	payload:res.data
-	// }))
+	axios.delete(`/api/posts/comment/${postId}/${commentId}`)
 	.then(res => {
 		dispatch({
 			type: GET_POST,
 			payload: res.data
 		})
-		return dispatch(getPosts());
 	})
 	.catch(err => dispatch({
 		type:GET_ERRORS,
@@ -119,4 +114,10 @@ export const unlikePost = (postId) => dispatch =>{
 		type: GET_ERRORS,
 		payload: err.response.data,
 	}))
+}
+
+export const clearErrors = dispatch =>{
+	return {
+		type:CLEAR_ERRORS
+	}
 }
