@@ -28,7 +28,7 @@ class Login extends Component{
 			email:this.state.email,
 			password:this.state.password,
 		}
-		console.log(loggedUser);
+		// console.log(loggedUser);
 		this.props.loginUser(loggedUser);
 	}
 	componentDidMount(){

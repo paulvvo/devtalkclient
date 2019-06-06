@@ -4,6 +4,7 @@ import {ADD_POST, GET_ERRORS, POST_LOADING, GET_POSTS, DELETE_POST, GET_POST, CL
 
 //Add Comment
 export const addComment = (postId, commentData) => dispatch =>{
+	dispatch(clearErrors());
 	axios.post(`/api/posts/comment/${postId}`, commentData)
 	.then(res => dispatch({
 		type:GET_POST,
@@ -30,6 +31,7 @@ export const deleteComment = (postId, commentId) => dispatch =>{
 }
 //Add Post
 export const addPost = (postData) => dispatch =>{
+	dispatch(clearErrors());
 	axios.post("/api/posts", postData)
 	// .then(res => {
 	// 	console.log(res.data);
